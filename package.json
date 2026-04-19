@@ -8,6 +8,7 @@
     "build": "vite build",
     "build:pages": "vite build",
     "generate:data": "node ./scripts/generate-countries.mjs",
+    "analyze:drift": "node ./scripts/analyze-drift.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
