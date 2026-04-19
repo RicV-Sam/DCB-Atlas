@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import countries from 'world-countries'
+import { loadOperatorIngestion } from './lib/ingest-operators.mjs'
 import { parseMasterSourceMarkets } from './lib/parse-master-source.mjs'
 
 const outputPath = path.resolve('src/data/countries.json')
@@ -22,6 +23,7 @@ const normalizeEntry = (value) => value.toLowerCase()
 const normalizeConfidence = (value) => value.toLowerCase()
 
 const parsedMasterMarkets = parseMasterSourceMarkets(countries)
+const ingestedOperatorsByCountry = await loadOperatorIngestion(countries)
 
 const dedupeBy = (values = [], getKey) => {
   const seen = new Set()
@@ -37,6 +39,14 @@ const dedupeBy = (values = [], getKey) => {
   return result
 }
 
+const normalizeNameKey = (value = '') =>
+  String(value ?? '')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/gi, ' ')
+    .toLowerCase()
+    .trim()
+
 const hasOnlyGenericOperatorNotes = (operators = []) =>
   operators.length > 0 &&
   operators.every((operator) =>
@@ -48,6 +58,61 @@ const hasOnlyGenericAggregatorNotes = (aggregators = []) =>
   aggregators.every((aggregator) =>
     aggregator.notes === null,
   )
+
+const namesLikelyMatch = (left = '', right = '') => {
+  const leftKey = normalizeNameKey(left)
+  const rightKey = normalizeNameKey(right)
+
+  if (!leftKey || !rightKey) {
+    return false
+  }
+
+  return (
+    leftKey === rightKey ||
+    leftKey.includes(rightKey) ||
+    rightKey.includes(leftKey)
+  )
+}
+
+const enrichOperatorFromRegistry = (operator, registryMatch) => ({
+  ...operator,
+  mccMnc: dedupeBy(
+    [...(operator.mccMnc ?? []), ...(registryMatch?.mccMnc ?? [])],
+    (item) => `${item.mcc}-${item.mnc}`,
+  ),
+  source:
+    operator.source ??
+    (registryMatch ? 'mcc-mnc-registry' : undefined),
+})
+
+const mergeIngestedOperators = (marketCode, operators = []) => {
+  const ingestedOperators = ingestedOperatorsByCountry[marketCode] ?? []
+
+  if (ingestedOperators.length === 0) {
+    return operators
+  }
+
+  if (operators.length === 0) {
+    return ingestedOperators.map((operator) => ({
+      name: operator.name,
+      subscriberEstimate: null,
+      dcb: true,
+      notes: null,
+      mccMnc: operator.mccMnc,
+      source: 'mcc-mnc-registry',
+    }))
+  }
+
+  return operators.map((operator) => {
+    const match = ingestedOperators.find((candidate) =>
+      namesLikelyMatch(operator.name, candidate.name) ||
+      namesLikelyMatch(operator.name, candidate.operator) ||
+      namesLikelyMatch(operator.name, candidate.brand),
+    )
+
+    return match ? enrichOperatorFromRegistry(operator, match) : operator
+  })
+}
 
 const mergeMarketRecord = (base, parsed, enriched) => {
   const merged = {
@@ -72,11 +137,17 @@ const mergeMarketRecord = (base, parsed, enriched) => {
     merged.aggregators = parsed.aggregators
   }
 
+  merged.operators = mergeIngestedOperators(base.code, merged.operators)
+
   const combinedSources = [
     ...(parsed?.sources ?? []),
     ...(enriched?.sources ?? []),
     ...(base.sources ?? []),
   ]
+
+  const operatorRegistryEnriched = merged.operators.some(
+    (operator) => operator.source === 'mcc-mnc-registry',
+  )
 
   merged.sources = dedupeBy(
     combinedSources.filter(
@@ -89,6 +160,20 @@ const mergeMarketRecord = (base, parsed, enriched) => {
     ),
     (source) => `${source.type}-${source.label}-${source.confidence}`,
   )
+
+  if (operatorRegistryEnriched) {
+    merged.sources = dedupeBy(
+      [
+        ...merged.sources,
+        {
+          type: 'operator-ingestion',
+          label: 'MCC/MNC registry operator coverage',
+          confidence: 'medium',
+        },
+      ],
+      (source) => `${source.type}-${source.label}-${source.confidence}`,
+    )
+  }
 
   return merged
 }
