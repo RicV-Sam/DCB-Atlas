@@ -2,12 +2,20 @@
 
 Week ending 2026-04-19
 
-This week’s drift check showed no high-signal structural change across the tracked DCB Atlas markets.
+Quiet week on the surface — but that usually means consolidation, not inactivity.
 
-That does not mean nothing is happening. It means no operator, aggregator, readiness, risk, or score movement crossed the threshold that should change commercial prioritisation right now.
+🇿🇦 South Africa
+No structural movement, but South Africa remains one of the most commercially mature DCB environments in the Atlas.
+-> Strong aggregator depth and high compliance enforcement still define whether execution stays premium or becomes operationally expensive.
 
-Stable weeks matter. In carrier billing and VAS, a quiet market can be the right market for disciplined execution, because fewer structural shifts usually mean fewer avoidable surprises in launch planning.
+🇳🇬 Nigeria
+No major shifts, but Nigeria still carries unmatched scale in Africa for partners that can absorb the regulatory drag.
+-> Volume opportunity still outweighs regulatory friction, but only when operator routing, trust controls, and support handling are built for scale.
 
-The better move this week is to focus on route validation, partner quality, and markets where timing already looks good rather than forcing a new narrative where the signal is weak.
+🇰🇪 Kenya
+Stable on paper, but Kenya still behaves like a mobile-money market first and a DCB market second.
+-> DCB usually performs best when positioned alongside wallet behaviour, not against it.
+
+Sometimes no movement is the signal — it tells you where the market has already settled.
 
 #DCB #CarrierBilling #Telecoms #VAS #MobilePayments #MarketIntelligence

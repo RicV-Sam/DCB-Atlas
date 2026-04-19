@@ -3,7 +3,7 @@ import path from 'node:path'
 
 const dataDir = path.resolve('data')
 const driftLogPath = path.join(dataDir, 'drift-log.json')
-const driftSummaryPath = path.join(dataDir, 'drift-summary.md')
+const countriesPath = path.join(dataDir, 'countries.json')
 const weeklyPostPath = path.join(dataDir, 'weekly-post.md')
 
 const HIGH_SIGNAL_IMPACTS = new Set(['high', 'critical'])
@@ -34,18 +34,123 @@ const interpret = (change) => {
 
 const readJson = async (filePath) => JSON.parse(await fs.readFile(filePath, 'utf8'))
 
-const readOptionalText = async (filePath) => {
-  try {
-    return await fs.readFile(filePath, 'utf8')
-  } catch {
-    return ''
-  }
-}
-
 const titleCase = (value = '') =>
   value
     .replace(/[_-]/g, ' ')
     .replace(/\b\w/g, (char) => char.toUpperCase())
+
+const flagEmoji = (countryCode = '') =>
+  countryCode
+    .toUpperCase()
+    .slice(0, 2)
+    .split('')
+    .map((char) => String.fromCodePoint(127397 + char.charCodeAt(0)))
+    .join('')
+
+const getTier = (market) => {
+  if (typeof market.marketScore !== 'number') return null
+  if (market.marketScore >= 80) return 1
+  if (market.marketScore >= 60) return 2
+  return 3
+}
+
+const getExecutionLine = (market) => {
+  const aggregatorCount = market.aggregators?.length ?? 0
+  const wallet = market.capabilities?.wallet
+  const strictness = market.regulation?.strictness
+  const recommendedEntry = market.recommendedEntry
+
+  if (market.code === 'ZA') {
+    return 'Strong aggregator depth and high compliance enforcement still define whether execution stays premium or becomes operationally expensive.'
+  }
+
+  if (market.code === 'NG') {
+    return 'Volume opportunity still outweighs regulatory friction, but only when operator routing, trust controls, and support handling are built for scale.'
+  }
+
+  if (market.code === 'KE') {
+    return 'DCB usually performs best when positioned alongside wallet behaviour, not against it.'
+  }
+
+  if (wallet === 'dominant' || wallet === 'strong') {
+    return 'DCB usually works best when positioned alongside wallet behaviour, not against it.'
+  }
+
+  if (strictness === 'high' || market.marketStatus?.risk === 'high') {
+    return 'Execution is still defined more by compliance discipline and partner quality than by topline demand alone.'
+  }
+
+  if (recommendedEntry === 'direct_operator') {
+    return 'Operator alignment still matters more than broad market narratives if you want execution quality.'
+  }
+
+  if (aggregatorCount >= 3) {
+    return 'Route quality still depends heavily on aggregator depth and how quickly that can be converted into commercial access.'
+  }
+
+  return 'The market still rewards disciplined execution more than reactive expansion.'
+}
+
+const getStableLead = (market) => {
+  if (market.code === 'ZA') {
+    return 'No structural movement, but South Africa remains one of the most commercially mature DCB environments in the Atlas.'
+  }
+
+  if (market.code === 'NG') {
+    return 'No major shifts, but Nigeria still carries unmatched scale in Africa for partners that can absorb the regulatory drag.'
+  }
+
+  if (market.code === 'KE') {
+    return 'Stable on paper, but Kenya still behaves like a mobile-money market first and a DCB market second.'
+  }
+
+  const tier = getTier(market)
+
+  if (tier === 1) {
+    return `No structural movement, but ${market.country} still reads as one of the more commercially mature DCB environments in the Atlas.`
+  }
+
+  if (tier === 2) {
+    return `No major shifts, but ${market.country} still looks like a scale or route-building market rather than a fully settled one.`
+  }
+
+  return `No major shifts, but ${market.country} still sits closer to watchlist territory, where stability can mean constraint as much as momentum.`
+}
+
+const selectStableAnchors = (countries) => {
+  const covered = countries.filter((country) => country.status !== 'research')
+  const byCode = new Map(covered.map((country) => [country.code, country]))
+  const preferred = ['ZA', 'NG', 'KE']
+    .map((code) => byCode.get(code))
+    .filter(Boolean)
+
+  if (preferred.length >= 3) {
+    return preferred.slice(0, 3)
+  }
+
+  const tierBuckets = {
+    1: covered.filter((country) => getTier(country) === 1),
+    2: covered.filter((country) => getTier(country) === 2),
+    3: covered.filter((country) => getTier(country) === 3),
+  }
+
+  const selected = [...preferred]
+  for (const tier of [1, 2, 3]) {
+    const candidate = tierBuckets[tier]
+      .sort((left, right) => (right.marketScore ?? 0) - (left.marketScore ?? 0))
+      .find((country) => !selected.some((item) => item.code === country.code))
+
+    if (candidate) {
+      selected.push(candidate)
+    }
+
+    if (selected.length >= 3) {
+      break
+    }
+  }
+
+  return selected.slice(0, 3)
+}
 
 const groupByCountry = (changes) => {
   const grouped = new Map()
@@ -132,10 +237,16 @@ If you’re prioritising VAS/DCB expansion, the right question is not just “wh
 `
 }
 
-const buildStablePost = ({ timestamp, summaryText }) => {
-  const summaryLine = summaryText.includes('No meaningful changes detected.')
-    ? 'This week’s drift check showed no high-signal structural change across the tracked DCB Atlas markets.'
-    : 'This week’s drift check suggests the market picture is broadly stable.'
+const buildStablePost = ({ timestamp, countries }) => {
+  const summaryLine = 'Quiet week on the surface — but that usually means consolidation, not inactivity.'
+  const anchors = selectStableAnchors(countries)
+  const anchorBlocks = anchors
+    .map(
+      (market) => `${flagEmoji(market.code)} ${market.country}
+${getStableLead(market)}
+-> ${getExecutionLine(market)}`,
+    )
+    .join('\n\n')
 
   return `# DCB Atlas - Weekly Intelligence Post
 
@@ -143,11 +254,9 @@ Week ending ${timestamp}
 
 ${summaryLine}
 
-That does not mean nothing is happening. It means no operator, aggregator, readiness, risk, or score movement crossed the threshold that should change commercial prioritisation right now.
+${anchorBlocks}
 
-Stable weeks matter. In carrier billing and VAS, a quiet market can be the right market for disciplined execution, because fewer structural shifts usually mean fewer avoidable surprises in launch planning.
-
-The better move this week is to focus on route validation, partner quality, and markets where timing already looks good rather than forcing a new narrative where the signal is weak.
+Sometimes no movement is the signal — it tells you where the market has already settled.
 
 #DCB #CarrierBilling #Telecoms #VAS #MobilePayments #MarketIntelligence
 `
@@ -155,7 +264,7 @@ The better move this week is to focus on route validation, partner quality, and 
 
 const main = async () => {
   const driftLog = await readJson(driftLogPath)
-  const driftSummary = await readOptionalText(driftSummaryPath)
+  const countries = await readJson(countriesPath)
   const highSignalChanges = (driftLog.changes ?? []).filter((change) =>
     HIGH_SIGNAL_IMPACTS.has(change.impact),
   )
@@ -167,7 +276,7 @@ const main = async () => {
       })
     : buildStablePost({
         timestamp: driftLog.timestamp,
-        summaryText: driftSummary,
+        countries,
       })
 
   await fs.writeFile(weeklyPostPath, post)
