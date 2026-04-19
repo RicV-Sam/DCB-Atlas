@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DCB Atlas is a static world map explorer for VAS and direct carrier billing markets, designed for faster market discovery and lead generation."
+    />
+    <title>DCB Atlas</title>
+    <script>
+      ;(function restoreGitHubPagesPath() {
+        const redirect = window.location.search
+        if (!redirect.startsWith('?/')) return
+
+        const decoded = redirect.slice(2).replace(/~and~/g, '&')
+        const nextUrl = `${window.location.pathname}${decoded}${window.location.hash}`
+        window.history.replaceState(null, '', nextUrl)
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

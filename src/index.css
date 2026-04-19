@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Georgia", "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --color-ink: #0d1b24;
+  --color-ocean: #12354a;
+  --color-ocean-deep: #0a2230;
+  --color-sand: #e8dcc0;
+  --color-brass: #a87b36;
+  --color-glow: #79b6bf;
+  --color-card: rgba(248, 244, 235, 0.88);
+}
+
+@layer base {
+  :root {
+    color: var(--color-ink);
+    background:
+      radial-gradient(circle at top, rgba(121, 182, 191, 0.2), transparent 35%),
+      linear-gradient(180deg, #f3ecdf 0%, #e6dcc7 100%);
+    font-family: var(--font-body);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(121, 182, 191, 0.18), transparent 32%),
+      radial-gradient(circle at 85% 15%, rgba(168, 123, 54, 0.15), transparent 26%),
+      linear-gradient(180deg, #f4ecde 0%, #ebe0cc 55%, #e2d6c1 100%);
+    color: var(--color-ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .atlas-shell {
+    @apply min-h-screen;
+    background-image:
+      linear-gradient(rgba(18, 53, 74, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 53, 74, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .atlas-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .atlas-panel {
+    @apply rounded-[28px] border border-white/50 bg-white/70 shadow-[0_18px_50px_rgba(17,35,49,0.12)] backdrop-blur;
+  }
+
+  .atlas-border {
+    @apply border border-[#12354a]/12;
+  }
+
+  .atlas-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-[#a87b36];
+  }
+
+  .atlas-title {
+    font-family: var(--font-display);
+  }
+
+  .atlas-link {
+    @apply inline-flex items-center gap-2 font-semibold text-[#12354a] transition hover:text-[#0a2230];
+  }
+
+  .atlas-button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-[#12354a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0a2230] focus:outline-none focus:ring-2 focus:ring-[#12354a]/40;
+  }
+
+  .atlas-button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-[#12354a]/20 bg-white/80 px-5 py-3 text-sm font-semibold text-[#12354a] transition hover:border-[#12354a]/40 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#12354a]/30;
+  }
+
+  .atlas-input {
+    @apply w-full rounded-2xl border border-[#12354a]/15 bg-white/85 px-4 py-3 text-sm text-[#0d1b24] outline-none transition placeholder:text-[#5f6a72] focus:border-[#12354a]/45 focus:ring-4 focus:ring-[#12354a]/10;
+  }
+}
