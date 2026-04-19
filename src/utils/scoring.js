@@ -7,9 +7,9 @@ const statusConfig = {
 }
 
 const confidenceConfig = {
-  verified: { label: 'Verified', className: 'bg-emerald-100 text-emerald-900 border-emerald-200' },
-  observed: { label: 'Observed', className: 'bg-sky-100 text-sky-900 border-sky-200' },
-  estimated: { label: 'Estimated', className: 'bg-amber-100 text-amber-900 border-amber-200' },
+  high: { label: 'High confidence', className: 'bg-emerald-100 text-emerald-900 border-emerald-200' },
+  'medium-high': { label: 'Medium-high confidence', className: 'bg-sky-100 text-sky-900 border-sky-200' },
+  medium: { label: 'Medium confidence', className: 'bg-amber-100 text-amber-900 border-amber-200' },
   pending: { label: 'Pending', className: 'bg-slate-100 text-slate-700 border-slate-200' },
 }
 

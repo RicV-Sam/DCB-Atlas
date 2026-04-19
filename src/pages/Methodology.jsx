@@ -28,9 +28,9 @@ export function MethodologyPage() {
             Confidence tiers
           </h2>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-[#35505f]">
-            <li>Verified: high-confidence data that has been directly confirmed for public use.</li>
-            <li>Observed: directional industry context that is useful, but still not a substitute for route verification.</li>
-            <li>Estimated: placeholder framing or rounded scale signals that should be treated cautiously.</li>
+            <li>High: strongest confidence within the public normalised dataset.</li>
+            <li>Medium-high: useful directional intelligence with only limited unresolved gaps.</li>
+            <li>Medium: commercially useful but should be validated before route planning.</li>
             <li>Pending: a country is mapped, but the public profile is not yet enriched.</li>
           </ul>
         </div>
@@ -38,7 +38,7 @@ export function MethodologyPage() {
 
       <section className="atlas-panel px-6 py-6">
         <h2 className="atlas-title text-3xl font-semibold text-[#0d1b24]">
-          What “research pending” means
+          What "research pending" means
         </h2>
         <p className="mt-5 max-w-4xl text-sm leading-8 text-[#35505f]">
           The atlas shows a global country skeleton so users can orient themselves visually,

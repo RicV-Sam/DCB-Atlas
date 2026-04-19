@@ -8,6 +8,7 @@ import {
   formatCompactNumber,
   formatNumber,
   formatReadableDate,
+  titleCase,
 } from '../utils/formatters'
 import {
   getConfidenceBadge,
@@ -15,6 +16,9 @@ import {
   getRiskBadge,
   getStatusBadge,
 } from '../utils/scoring'
+
+const sentenceCase = (value) =>
+  value ? `${value.charAt(0).toUpperCase()}${value.slice(1)}` : 'Pending'
 
 export function CountryDetailPage() {
   const { slug } = useParams()
@@ -68,7 +72,7 @@ export function CountryDetailPage() {
                   Market score
                 </p>
                 <p className="atlas-title mt-2 text-4xl font-semibold">
-                  {market.marketScore ?? '—'}
+                  {market.marketScore ?? '-'}
                 </p>
               </div>
               <div>
@@ -76,7 +80,7 @@ export function CountryDetailPage() {
                   Opportunity score
                 </p>
                 <p className="atlas-title mt-2 text-4xl font-semibold">
-                  {market.opportunityScore ?? '—'}
+                  {market.opportunityScore ?? '-'}
                 </p>
               </div>
               <div>
@@ -116,17 +120,160 @@ export function CountryDetailPage() {
                 title="What the current public read suggests"
                 description={market.commercialNote}
               />
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Opportunity
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {sentenceCase(market.opportunity)}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Entry ease
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {sentenceCase(market.entryEase)}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Recommended entry
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {titleCase(market.recommendedEntry)}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Pricing model
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {market.commercial.pricingModel.length > 0
+                      ? market.commercial.pricingModel.join(', ')
+                      : 'Pending'}
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="atlas-panel px-6 py-6">
               <SectionHeading
                 eyebrow="Regulatory stance"
                 title={
                   market.regulation?.riskLevel
-                    ? `${market.regulation.riskLevel[0].toUpperCase()}${market.regulation.riskLevel.slice(1)} risk outlook`
+                    ? `${sentenceCase(market.regulation.riskLevel)} risk outlook`
                     : 'Risk outlook pending'
                 }
                 description={market.regulation?.notes}
               />
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Regulator
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {market.regulation?.regulator ?? 'Pending'}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Strictness
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {sentenceCase(market.regulation?.strictness)}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid gap-6 lg:grid-cols-2">
+            <div className="atlas-panel px-6 py-6">
+              <SectionHeading
+                eyebrow="Commercial model"
+                title="Monetisation and conversion conditions"
+                description="These fields make the normalised dataset more decision-oriented for launch planning."
+              />
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    ARPU level
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {sentenceCase(market.commercial?.arpuLevel)}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Conversion difficulty
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {sentenceCase(market.commercial?.conversionDifficulty)}
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4 rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                  Best verticals
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {market.bestVerticals.length > 0 ? (
+                    market.bestVerticals.map((vertical) => (
+                      <Badge
+                        key={vertical}
+                        className="border-[#d3c1a0] bg-[#ebe0cb] text-[#12354a]"
+                      >
+                        {vertical}
+                      </Badge>
+                    ))
+                  ) : (
+                    <span className="text-sm text-[#35505f]">Pending</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="atlas-panel px-6 py-6">
+              <SectionHeading
+                eyebrow="Capabilities"
+                title="Billing and ecosystem signals"
+                description="Use these as shortlist indicators rather than hard route guarantees."
+              />
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    DCB
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {market.capabilities?.dcb ? 'Yes' : 'No'}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    PSMS
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {market.capabilities?.psms ? 'Yes' : 'No'}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    Wallet
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {sentenceCase(market.capabilities?.wallet)}
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">
+                    HE support
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
+                    {sentenceCase(market.capabilities?.heSupport)}
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -135,7 +282,7 @@ export function CountryDetailPage() {
               <SectionHeading
                 eyebrow="Operators"
                 title="Main public operator references"
-                description="Operator counts and subscriber estimates are illustrative where marked and should be verified before planning live access."
+                description="Operator names are normalised references in the curated dataset."
               />
               <div className="mt-6 space-y-4">
                 {market.operators.length > 0 ? (
@@ -157,10 +304,7 @@ export function CountryDetailPage() {
                           <p className="font-semibold text-[#0d1b24]">
                             {operator.subscriberEstimate
                               ? formatNumber(operator.subscriberEstimate)
-                              : 'Pending'}
-                          </p>
-                          <p className="mt-1 text-xs uppercase tracking-[0.16em]">
-                            Subscribers
+                              : 'Normalised ref'}
                           </p>
                         </div>
                       </div>
@@ -175,14 +319,14 @@ export function CountryDetailPage() {
             <div className="atlas-panel px-6 py-6">
               <SectionHeading
                 eyebrow="Aggregators"
-                title="Publicly framed billing partners"
-                description="Aggregator references are illustrative observations unless clearly verified."
+                title="Local and international billing partners"
+                description="The new dataset distinguishes local from international aggregator references."
               />
               <div className="mt-6 space-y-4">
                 {market.aggregators.length > 0 ? (
                   market.aggregators.map((aggregator) => (
                     <article
-                      key={aggregator.name}
+                      key={`${aggregator.scope}-${aggregator.name}`}
                       className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4"
                     >
                       <div className="flex items-start justify-between gap-4">
@@ -195,7 +339,7 @@ export function CountryDetailPage() {
                           </p>
                         </div>
                         <Badge className="border-[#d3c1a0] bg-[#ebe0cb] text-[#12354a]">
-                          {aggregator.status}
+                          {aggregator.scope}
                         </Badge>
                       </div>
                     </article>
@@ -215,7 +359,7 @@ export function CountryDetailPage() {
         <SectionHeading
           eyebrow="Source framing"
           title="How confident is this public profile?"
-          description="DCB Atlas uses lightweight public labels so readers can separate stronger observed signals from placeholder coverage."
+          description="DCB Atlas uses lightweight public labels so readers can separate stronger normalised market signals from placeholder coverage."
         />
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
           {market.sources.map((source) => (
