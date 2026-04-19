@@ -9,6 +9,7 @@
     "build:pages": "vite build",
     "generate:data": "node ./scripts/generate-countries.mjs",
     "analyze:drift": "node ./scripts/analyze-drift.mjs",
+    "generate:weekly-post": "node ./scripts/generate-weekly-post.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
