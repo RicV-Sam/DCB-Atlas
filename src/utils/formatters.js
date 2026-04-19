@@ -1,9 +1,29 @@
+const hasNumericValue = (value) => {
+  if (value === null || value === undefined) {
+    return false
+  }
+
+  if (typeof value === 'number') {
+    return !Number.isNaN(value)
+  }
+
+  if (typeof value === 'string') {
+    return /^\d+(\.\d+)?$/.test(value.trim())
+  }
+
+  return false
+}
+
 export const formatNumber = (value) => {
   if (value === null || value === undefined || Number.isNaN(value)) {
     return 'Pending research'
   }
 
-  return new Intl.NumberFormat('en-GB').format(value)
+  if (typeof value === 'string' && !hasNumericValue(value)) {
+    return value
+  }
+
+  return new Intl.NumberFormat('en-GB').format(Number(value))
 }
 
 export const formatCompactNumber = (value) => {
@@ -11,10 +31,14 @@ export const formatCompactNumber = (value) => {
     return 'Pending'
   }
 
+  if (typeof value === 'string' && !hasNumericValue(value)) {
+    return value
+  }
+
   return new Intl.NumberFormat('en-GB', {
     notation: 'compact',
     maximumFractionDigits: 1,
-  }).format(value)
+  }).format(Number(value))
 }
 
 export const formatReadableDate = (value) => {
