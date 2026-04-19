@@ -17,30 +17,38 @@ export function SiteLayout() {
               DA
             </div>
             <div>
-              <p className="atlas-eyebrow">Editorial Market Explorer</p>
+              <p className="atlas-eyebrow">Market-entry intelligence</p>
               <h1 className="atlas-title text-2xl font-semibold text-[#0d1b24]">
                 DCB Atlas
               </h1>
             </div>
           </NavLink>
 
-          <nav aria-label="Primary" className="flex flex-wrap gap-2">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  `rounded-full px-4 py-2 text-sm font-medium transition ${
-                    isActive
-                      ? 'bg-[#12354a] text-white'
-                      : 'bg-white/60 text-[#12354a] hover:bg-white'
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
+          <div className="flex flex-col gap-4 lg:items-end">
+            <nav aria-label="Primary" className="flex flex-wrap gap-2">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) =>
+                    `rounded-full px-4 py-2 text-sm font-medium transition ${
+                      isActive
+                        ? 'bg-[#12354a] text-white'
+                        : 'bg-white/60 text-[#12354a] hover:bg-white'
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
+            <a
+              className="atlas-button-primary"
+              href="mailto:briefings@dcbatlas.com?subject=Request%20Market%20Briefing"
+            >
+              Request Market Briefing
+            </a>
+          </div>
         </div>
       </header>
 
@@ -53,10 +61,14 @@ export function SiteLayout() {
           <div>
             <p className="atlas-title text-lg text-[#0d1b24]">DCB Atlas</p>
             <p>
-              Static VAS / DCB market explorer for fast commercial qualification.
+              Static DCB market reference for shortlist shaping, partner context, and
+              launch planning.
             </p>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
+            <NavLink className="atlas-link" to="/markets">
+              Browse markets
+            </NavLink>
             <NavLink className="atlas-link" to="/methodology">
               Methodology
             </NavLink>

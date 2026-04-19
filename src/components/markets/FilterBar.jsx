@@ -23,7 +23,7 @@ export function FilterBar({ filters, onFilterChange, onReset, options }) {
   return (
     <div className="atlas-panel px-5 py-5 sm:px-6">
       <div className="flex flex-col gap-5">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <SelectField
             label="Region"
             value={filters.region}
@@ -39,7 +39,10 @@ export function FilterBar({ filters, onFilterChange, onReset, options }) {
             onChange={(value) => onFilterChange('status', value)}
             options={[
               { value: 'all', label: 'All statuses' },
-              ...options.statuses.map((status) => ({ value: status, label: titleCase(status) })),
+              ...options.statuses.map((status) => ({
+                value: status,
+                label: titleCase(status),
+              })),
             ]}
           />
           <SelectField
@@ -67,16 +70,6 @@ export function FilterBar({ filters, onFilterChange, onReset, options }) {
             ]}
           />
           <SelectField
-            label="Aggregator presence"
-            value={filters.aggregatorPresence}
-            onChange={(value) => onFilterChange('aggregatorPresence', value)}
-            options={[
-              { value: 'all', label: 'All markets' },
-              { value: 'present', label: 'With aggregators' },
-              { value: 'absent', label: 'Without aggregators' },
-            ]}
-          />
-          <SelectField
             label="Confidence"
             value={filters.confidence}
             onChange={(value) => onFilterChange('confidence', value)}
@@ -85,6 +78,62 @@ export function FilterBar({ filters, onFilterChange, onReset, options }) {
               ...options.confidence.map((confidence) => ({
                 value: confidence,
                 label: titleCase(confidence),
+              })),
+            ]}
+          />
+          <SelectField
+            label="Entry ease"
+            value={filters.entryEase}
+            onChange={(value) => onFilterChange('entryEase', value)}
+            options={[
+              { value: 'all', label: 'All entry types' },
+              ...options.entryEase.map((entryEase) => ({
+                value: entryEase,
+                label: titleCase(entryEase),
+              })),
+            ]}
+          />
+          <SelectField
+            label="DCB capability"
+            value={filters.dcbCapability}
+            onChange={(value) => onFilterChange('dcbCapability', value)}
+            options={[
+              { value: 'all', label: 'All markets' },
+              { value: 'true', label: 'DCB capability present' },
+              { value: 'false', label: 'No DCB capability flagged' },
+            ]}
+          />
+          <SelectField
+            label="Wallet relevance"
+            value={filters.wallet}
+            onChange={(value) => onFilterChange('wallet', value)}
+            options={[
+              { value: 'all', label: 'All wallet contexts' },
+              ...options.wallet.map((wallet) => ({
+                value: wallet,
+                label: titleCase(wallet),
+              })),
+            ]}
+          />
+          <SelectField
+            label="Aggregator presence"
+            value={filters.aggregatorPresence}
+            onChange={(value) => onFilterChange('aggregatorPresence', value)}
+            options={[
+              { value: 'all', label: 'All markets' },
+              { value: 'present', label: 'With named aggregators' },
+              { value: 'absent', label: 'Without named aggregators' },
+            ]}
+          />
+          <SelectField
+            label="Best vertical"
+            value={filters.bestVertical}
+            onChange={(value) => onFilterChange('bestVertical', value)}
+            options={[
+              { value: 'all', label: 'All verticals' },
+              ...options.bestVerticals.map((vertical) => ({
+                value: vertical,
+                label: titleCase(vertical),
               })),
             ]}
           />

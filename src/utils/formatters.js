@@ -14,6 +14,35 @@ const hasNumericValue = (value) => {
   return false
 }
 
+export const getComparableNumber = (value) => {
+  if (value === null || value === undefined || Number.isNaN(value)) {
+    return null
+  }
+
+  if (typeof value === 'number') {
+    return value
+  }
+
+  if (typeof value !== 'string') {
+    return null
+  }
+
+  const normalized = value.replace(/,/g, '')
+  const match = normalized.match(/(\d+(\.\d+)?)\s*([kmb])?/i)
+
+  if (!match) {
+    return null
+  }
+
+  const numericValue = Number(match[1])
+  const suffix = match[3]?.toLowerCase()
+
+  if (suffix === 'b') return numericValue * 1_000_000_000
+  if (suffix === 'm') return numericValue * 1_000_000
+  if (suffix === 'k') return numericValue * 1_000
+  return numericValue
+}
+
 export const formatNumber = (value) => {
   if (value === null || value === undefined || Number.isNaN(value)) {
     return 'Pending research'

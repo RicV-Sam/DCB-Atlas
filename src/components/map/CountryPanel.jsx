@@ -1,21 +1,31 @@
 import { Link } from 'react-router-dom'
-import { formatCompactNumber, formatReadableDate } from '../../utils/formatters'
+import { formatCompactNumber, formatReadableDate, titleCase } from '../../utils/formatters'
 import {
   getConfidenceBadge,
+  getEntryEaseBadge,
+  getOpportunityBadge,
   getReadinessBadge,
+  getResolvedEntryEase,
+  getResolvedOpportunityLevel,
+  getResolvedRiskLevel,
   getRiskBadge,
   getStatusBadge,
 } from '../../utils/scoring'
 import { Badge } from '../shared/Badge'
-import { CtaBanner } from '../shared/CtaBanner'
+
+const sentenceCase = (value) =>
+  value ? `${value.charAt(0).toUpperCase()}${value.slice(1)}` : 'Pending'
 
 export function CountryPanel({ market, open, onClose }) {
   if (!market) return null
 
   const status = getStatusBadge(market.status)
   const readiness = getReadinessBadge(market.dcbReadiness)
-  const risk = getRiskBadge(market.regulation?.riskLevel)
+  const risk = getRiskBadge(getResolvedRiskLevel(market))
   const confidence = getConfidenceBadge(market.confidence)
+  const opportunity = getOpportunityBadge(getResolvedOpportunityLevel(market))
+  const entryEase = getEntryEaseBadge(getResolvedEntryEase(market))
+  const summaryCopy = market.marketReality ?? market.commercialNote ?? market.notes
 
   return (
     <>
@@ -54,6 +64,7 @@ export function CountryPanel({ market, open, onClose }) {
         <div className="space-y-6 px-5 py-5">
           <div className="flex flex-wrap gap-2">
             <Badge className={status.className}>{status.label}</Badge>
+            <Badge className={opportunity.className}>{opportunity.label}</Badge>
             <Badge className={readiness.className}>{readiness.label}</Badge>
             <Badge className={risk.className}>{risk.label}</Badge>
             <Badge className={confidence.className}>{confidence.label}</Badge>
@@ -80,9 +91,55 @@ export function CountryPanel({ market, open, onClose }) {
             </div>
           </div>
 
+          <div className="rounded-[24px] border border-[#12354a]/10 bg-white/65 p-4">
+            <p className="text-xs uppercase tracking-[0.16em] text-[#6b7680]">
+              Decision snapshot
+            </p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-[#6b7680]">
+                  Entry ease
+                </p>
+                <p className="mt-1 text-sm font-semibold text-[#0d1b24]">
+                  {entryEase.label}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-[#6b7680]">
+                  Recommended path
+                </p>
+                <p className="mt-1 text-sm font-semibold text-[#0d1b24]">
+                  {titleCase(market.recommendedEntry)}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-[#6b7680]">
+                  Aggregators
+                </p>
+                <p className="mt-1 text-sm font-semibold text-[#0d1b24]">
+                  {market.aggregators.length > 0
+                    ? `${market.aggregators.length} named partners`
+                    : 'No named partners yet'}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-[#6b7680]">
+                  Last updated
+                </p>
+                <p className="mt-1 text-sm font-semibold text-[#0d1b24]">
+                  {formatReadableDate(market.lastUpdated)}
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="space-y-3 text-sm leading-7 text-[#35505f]">
-            <p>{market.notes}</p>
-            <p>{market.commercialNote}</p>
+            <p>{summaryCopy}</p>
+            {market.trafficSuitability ? (
+              <p>
+                Traffic fit: <span className="font-semibold text-[#0d1b24]">{sentenceCase(market.trafficSuitability)}</span>
+              </p>
+            ) : null}
           </div>
 
           <div className="grid gap-4 rounded-[24px] border border-[#12354a]/10 bg-white/65 p-4">
@@ -98,32 +155,27 @@ export function CountryPanel({ market, open, onClose }) {
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.16em] text-[#6b7680]">
-                Aggregators
+                Best verticals
               </p>
               <p className="mt-2 text-sm text-[#0d1b24]">
-                {market.aggregators.length > 0
-                  ? market.aggregators.map((aggregator) => aggregator.name).join(', ')
-                  : 'No public names added yet'}
-              </p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-[#6b7680]">
-                Last updated
-              </p>
-              <p className="mt-2 text-sm font-semibold text-[#0d1b24]">
-                {formatReadableDate(market.lastUpdated)}
+                {market.bestVerticals.length > 0
+                  ? market.bestVerticals.join(', ')
+                  : 'Pending'}
               </p>
             </div>
           </div>
 
-          <Link className="atlas-button-primary w-full" to={`/markets/${market.slug}`}>
-            View full profile
-          </Link>
-
-          <CtaBanner
-            title="Need a sharper read on this market?"
-            description="Use the atlas as an editorial starting point, then request a tailored briefing before making routing or launch decisions."
-          />
+          <div className="grid gap-3">
+            <a
+              className="atlas-button-primary w-full text-center"
+              href={`mailto:briefings@dcbatlas.com?subject=${encodeURIComponent(`Ask for Route Validation: ${market.country}`)}`}
+            >
+              Ask for Route Validation
+            </a>
+            <Link className="atlas-button-secondary w-full text-center" to={`/markets/${market.slug}`}>
+              View full profile
+            </Link>
+          </div>
         </div>
       </aside>
     </>
