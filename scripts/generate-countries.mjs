@@ -1,8 +1,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import countries from 'world-countries'
+import { parseMasterSourceMarkets } from './lib/parse-master-source.mjs'
 
 const outputPath = path.resolve('src/data/countries.json')
+const generatedAt = '2026-04-19'
 
 const slugify = (value) =>
   value
@@ -18,6 +20,8 @@ const normalizePricingModel = (values = []) =>
 const normalizeEntry = (value) => value.toLowerCase()
 
 const normalizeConfidence = (value) => value.toLowerCase()
+
+const parsedMasterMarkets = parseMasterSourceMarkets(countries)
 
 const normalizeMarket = (market) => ({
   status: market.marketStatus.dcbStatus.toLowerCase() === 'live' ? 'live' : 'limited',
@@ -900,11 +904,15 @@ const dataset = countries
   .filter((country) => country.cca2 !== 'AQ')
   .map((country) => {
     const base = baseRecord(country)
+    const parsed = parsedMasterMarkets[country.cca2]
     const enriched = africaPriorityMarkets[country.cca2]
 
-    return enriched
-      ? { ...base, ...enriched, lastUpdated: '2026-04-19' }
-      : base
+    return {
+      ...base,
+      ...(parsed ?? {}),
+      ...(enriched ?? {}),
+      lastUpdated: generatedAt,
+    }
   })
   .sort((left, right) => left.country.localeCompare(right.country))
 
