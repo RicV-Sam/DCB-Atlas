@@ -37,6 +37,8 @@ const customAliases = {
   uae: 'AE',
 }
 
+const excludedMarketCodes = new Set(['AF'])
+
 const confidenceRank = {
   pending: 0,
   low: 1,
@@ -80,6 +82,9 @@ const splitList = (value = '') =>
 
 const dedupeStrings = (values = []) => [...new Set(values.filter(Boolean))]
 
+const invalidNamePattern =
+  /^(yes|no|unknown|limited|minimal|partial|n\/a|none confirmed|minimal presence|limited presence|very limited|limited information|information|presence|not verifiable|\/ not verifiable|none)$/i
+
 const extractNames = (value = '') =>
   dedupeStrings(
     splitList(value.replace(/\([^)]*\)/g, '')).map((item) =>
@@ -92,7 +97,7 @@ const extractNames = (value = '') =>
   ).filter(
     (item) =>
       item &&
-      !/^(yes|no|unknown|limited|partial|n\/a)$/i.test(item) &&
+      !invalidNamePattern.test(item) &&
       item.length > 1,
   )
 
@@ -453,7 +458,7 @@ const parseOperators = (block = '') => {
 
     const content = trimmed.slice(2).trim()
     if (
-      /^(operator|operators?|note|notes|others|prepaid dominance)/i.test(content)
+      /^(operator|operators?|note|notes|others|prepaid dominan)/i.test(content)
     ) {
       continue
     }
@@ -534,6 +539,174 @@ const parseInsight = (block = '') =>
       .join(' '),
   )
 
+const parseBooleanCapability = (value = '') => {
+  const normalized = normalizeKey(value)
+
+  if (!normalized || normalized === 'unknown') {
+    return null
+  }
+
+  if (
+    normalized.includes('yes') ||
+    normalized.includes('available') ||
+    normalized.includes('active') ||
+    normalized.includes('full')
+  ) {
+    return true
+  }
+
+  if (
+    normalized.includes('no') ||
+    normalized.includes('none') ||
+    normalized.includes('not available')
+  ) {
+    return false
+  }
+
+  if (normalized.includes('partial') || normalized.includes('limited')) {
+    return true
+  }
+
+  return null
+}
+
+const cleanMetaTail = (value = '') =>
+  cleanText(value)
+    .replace(/Last Updated:[^.]+/gi, '')
+    .replace(/Confidence(?: Level)?:[^.]+/gi, '')
+    .replace(/\s+-\s*$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+const inferRegulatorFromInsight = (value = '') => {
+  const match = value.match(/\b([A-Z][A-Z&]{1,8}) is the regulator\b/)
+  return match ? match[1] : null
+}
+
+const parseOperatorsDetailed = (block = '') => {
+  const operators = []
+
+  for (const line of cleanText(block).split('\n')) {
+    const trimmed = line.trim()
+    if (!trimmed.startsWith('- ')) {
+      continue
+    }
+
+    const content = trimmed.slice(2).trim()
+    if (
+      /^(operator|operators?|note|notes|others|prepaid dominance)/i.test(content)
+    ) {
+      continue
+    }
+
+    const name = content
+      .split('|')[0]
+      .replace(/\s+[\u2013-]\s+.*$/g, '')
+      .replace(/:\s*[^:]*$/g, '')
+      .trim()
+
+    if (!name || invalidNamePattern.test(name)) {
+      continue
+    }
+
+    const notes = cleanText(
+      content
+        .replace(name, '')
+        .replace(/^[|:\-\s]+/, ''),
+    )
+
+    if (!operators.some((operator) => operator.name === name)) {
+      operators.push({
+        name,
+        notes: notes || null,
+      })
+    }
+  }
+
+  return operators
+}
+
+const parseAggregatorsDetailed = (block = '') => {
+  const local = []
+  const international = []
+  let mode = null
+
+  const pushAggregator = (target, name, notes = null) => {
+    if (!name || invalidNamePattern.test(name)) {
+      return
+    }
+
+    if (!target.some((aggregator) => aggregator.name === name)) {
+      target.push({
+        name,
+        notes: notes || null,
+      })
+    }
+  }
+
+  for (const rawLine of cleanText(block).split('\n')) {
+    const trimmed = rawLine.trim()
+    if (!trimmed) {
+      continue
+    }
+
+    if (/^local aggregators:?$/i.test(trimmed)) {
+      mode = 'local'
+      continue
+    }
+
+    if (/^international aggregators:?$/i.test(trimmed)) {
+      mode = 'international'
+      continue
+    }
+
+    if (!trimmed.startsWith('- ')) {
+      continue
+    }
+
+    const content = trimmed.slice(2).trim()
+
+    if (/^local:/i.test(content)) {
+      for (const name of extractNames(content.replace(/^local:\s*/i, ''))) {
+        pushAggregator(local, name)
+      }
+      mode = null
+      continue
+    }
+
+    if (/^international:/i.test(content)) {
+      for (const name of extractNames(content.replace(/^international:\s*/i, ''))) {
+        pushAggregator(international, name)
+      }
+      mode = null
+      continue
+    }
+
+    if (mode === 'local') {
+      for (const name of extractNames(content)) {
+        pushAggregator(
+          local,
+          name,
+          cleanText(content.replace(name, '').replace(/^[|:\-\s]+/, '')) || null,
+        )
+      }
+      continue
+    }
+
+    if (mode === 'international') {
+      for (const name of extractNames(content)) {
+        pushAggregator(
+          international,
+          name,
+          cleanText(content.replace(name, '').replace(/^[|:\-\s]+/, '')) || null,
+        )
+      }
+    }
+  }
+
+  return { local, international }
+}
+
 const parseRecord = (title, body, countryIndex) => {
   const code = resolveCountryCode(title, countryIndex)
   if (!code) {
@@ -548,9 +721,9 @@ const parseRecord = (title, body, countryIndex) => {
   const regulationFields = parseKeyValueList(sections['regulation compliance'])
   const commercialFields = parseKeyValueList(sections['commercial assessment'])
   const metaFields = parseKeyValueList(sections.meta)
-  const aggregators = parseAggregators(sections.aggregators)
-  const operators = parseOperators(sections.operators)
-  const insight = parseInsight(sections['market insights'])
+  const aggregators = parseAggregatorsDetailed(sections.aggregators)
+  const operators = parseOperatorsDetailed(sections.operators)
+  const insight = cleanMetaTail(parseInsight(sections['market insights']))
   const confidence = normalizeConfidence(
     metadata['source confidence'] ?? metaFields['confidence level'],
   )
@@ -571,6 +744,7 @@ const parseRecord = (title, body, countryIndex) => {
   )
 
   const regulationNotes = [
+    regulationFields.compliance,
     regulationFields['key requirements'],
     regulationFields['notable compliance'],
     regulationFields['known enforcement strictness'],
@@ -613,36 +787,38 @@ const parseRecord = (title, body, countryIndex) => {
       ),
       pricingModel: pricingModels,
     },
-    operators: operators.map((name) => ({
-      name,
+    operators: operators.map((operator) => ({
+      name: operator.name,
       subscriberEstimate: null,
       dcb: true,
-      notes: 'Imported from master source document.',
+      notes: operator.notes || 'Public operator reference from source.',
     })),
     aggregators: [
-      ...aggregators.local.map((name) => ({
-        name,
+      ...aggregators.local.map((aggregator) => ({
+        name: aggregator.name,
         scope: 'local',
         status: 'listed',
-        notes: 'Imported from master source document.',
+        notes: aggregator.notes || 'Listed in source.',
       })),
-      ...aggregators.international.map((name) => ({
-        name,
+      ...aggregators.international.map((aggregator) => ({
+        name: aggregator.name,
         scope: 'international',
         status: 'listed',
-        notes: 'Imported from master source document.',
+        notes: aggregator.notes || 'Listed in source.',
       })),
     ],
     capabilities: {
       dcb:
-        !/no/i.test(billingFields['direct carrier billing'] ?? '') &&
-        Boolean(billingFields['direct carrier billing']),
+        parseBooleanCapability(
+          billingFields['direct carrier billing'] ?? billingFields.dcb,
+        ) ?? false,
       psms:
-        !/no/i.test(billingFields['premium sms'] ?? '') &&
-        Boolean(billingFields['premium sms']),
+        parseBooleanCapability(
+          billingFields['premium sms'] ?? billingFields.psms,
+        ) ?? false,
       wallet: normalizeWallet(walletField),
       heSupport: enumFromText(
-        billingFields['he support likelihood'],
+        billingFields['he support likelihood'] ?? billingFields['header enrichment'],
         'unknown',
       ),
     },
@@ -650,6 +826,7 @@ const parseRecord = (title, body, countryIndex) => {
       regulator:
         regulationFields.regulator ??
         regulationFields['key regulator'] ??
+        inferRegulatorFromInsight(insight) ??
         'Pending',
       strictness: normalizeStrictness(
         regulationFields['enforcement strictness'] ??
@@ -789,6 +966,10 @@ export const parseMasterSourceMarkets = (countries) => {
 
     const record = parseRecord(section.title, section.body, countryIndex)
     if (!record) {
+      continue
+    }
+
+    if (excludedMarketCodes.has(record.code)) {
       continue
     }
 

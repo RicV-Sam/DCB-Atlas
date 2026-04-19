@@ -193,7 +193,7 @@ export function CountryDetailPage() {
               <SectionHeading
                 eyebrow="Commercial model"
                 title="Monetisation and conversion conditions"
-                description="These fields make the normalised dataset more decision-oriented for launch planning."
+                description="These fields summarise the current public market signals for launch planning."
               />
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
@@ -282,7 +282,7 @@ export function CountryDetailPage() {
               <SectionHeading
                 eyebrow="Operators"
                 title="Main public operator references"
-                description="Operator names are normalised references in the curated dataset."
+                description="Operator details come from the current market source set where public references were available."
               />
               <div className="mt-6 space-y-4">
                 {market.operators.length > 0 ? (
@@ -296,15 +296,17 @@ export function CountryDetailPage() {
                           <h3 className="text-lg font-semibold text-[#0d1b24]">
                             {operator.name}
                           </h3>
-                          <p className="mt-2 text-sm leading-7 text-[#35505f]">
-                            {operator.notes}
-                          </p>
+                          {operator.notes ? (
+                            <p className="mt-2 text-sm leading-7 text-[#35505f]">
+                              {operator.notes}
+                            </p>
+                          ) : null}
                         </div>
                         <div className="text-right text-sm text-[#35505f]">
                           <p className="font-semibold text-[#0d1b24]">
                             {operator.subscriberEstimate
                               ? formatNumber(operator.subscriberEstimate)
-                              : 'Normalised ref'}
+                              : 'Public reference'}
                           </p>
                         </div>
                       </div>
@@ -334,9 +336,11 @@ export function CountryDetailPage() {
                           <h3 className="text-lg font-semibold text-[#0d1b24]">
                             {aggregator.name}
                           </h3>
-                          <p className="mt-2 text-sm leading-7 text-[#35505f]">
-                            {aggregator.notes}
-                          </p>
+                          {aggregator.notes ? (
+                            <p className="mt-2 text-sm leading-7 text-[#35505f]">
+                              {aggregator.notes}
+                            </p>
+                          ) : null}
                         </div>
                         <Badge className="border-[#d3c1a0] bg-[#ebe0cb] text-[#12354a]">
                           {aggregator.scope}
@@ -359,7 +363,7 @@ export function CountryDetailPage() {
         <SectionHeading
           eyebrow="Source framing"
           title="How confident is this public profile?"
-          description="DCB Atlas uses lightweight public labels so readers can separate stronger normalised market signals from placeholder coverage."
+          description="Confidence labels help separate stronger sourced market signals from markets that still need deeper verification."
         />
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
           {market.sources.map((source) => (

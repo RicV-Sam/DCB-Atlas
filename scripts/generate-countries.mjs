@@ -23,6 +23,76 @@ const normalizeConfidence = (value) => value.toLowerCase()
 
 const parsedMasterMarkets = parseMasterSourceMarkets(countries)
 
+const dedupeBy = (values = [], getKey) => {
+  const seen = new Set()
+  const result = []
+
+  for (const value of values) {
+    const key = getKey(value)
+    if (seen.has(key)) continue
+    seen.add(key)
+    result.push(value)
+  }
+
+  return result
+}
+
+const hasOnlyGenericOperatorNotes = (operators = []) =>
+  operators.length > 0 &&
+  operators.every((operator) =>
+    operator.notes === null,
+  )
+
+const hasOnlyGenericAggregatorNotes = (aggregators = []) =>
+  aggregators.length > 0 &&
+  aggregators.every((aggregator) =>
+    aggregator.notes === null,
+  )
+
+const mergeMarketRecord = (base, parsed, enriched) => {
+  const merged = {
+    ...base,
+    ...(parsed ?? {}),
+    ...(enriched ?? {}),
+    lastUpdated: generatedAt,
+  }
+
+  if (parsed?.subscriberEstimate && !enriched?.subscriberEstimate) {
+    merged.subscriberEstimate = parsed.subscriberEstimate
+  }
+
+  if (parsed?.operators?.length && hasOnlyGenericOperatorNotes(enriched?.operators ?? [])) {
+    merged.operators = parsed.operators
+  }
+
+  if (
+    parsed?.aggregators?.length &&
+    hasOnlyGenericAggregatorNotes(enriched?.aggregators ?? [])
+  ) {
+    merged.aggregators = parsed.aggregators
+  }
+
+  const combinedSources = [
+    ...(parsed?.sources ?? []),
+    ...(enriched?.sources ?? []),
+    ...(base.sources ?? []),
+  ]
+
+  merged.sources = dedupeBy(
+    combinedSources.filter(
+      (source) =>
+        !(
+          merged.status !== 'research' &&
+          source.type === 'placeholder' &&
+          source.label === 'Research pending placeholder'
+        ),
+    ),
+    (source) => `${source.type}-${source.label}-${source.confidence}`,
+  )
+
+  return merged
+}
+
 const normalizeMarket = (market) => ({
   status: market.marketStatus.dcbStatus.toLowerCase() === 'live' ? 'live' : 'limited',
   marketScore: market.marketScore,
@@ -38,6 +108,7 @@ const normalizeMarket = (market) => ({
       : market.opportunity === 'medium'
         ? Math.max(60, market.marketScore - 2)
         : Math.max(48, market.marketScore - 8),
+  subscriberEstimate: market.subscriberEstimate ?? null,
   confidence: normalizeConfidence(market.confidence),
   dcbReadiness: market.marketStatus.readiness.toLowerCase(),
   marketStatus: {
@@ -55,20 +126,20 @@ const normalizeMarket = (market) => ({
     name,
     subscriberEstimate: null,
     dcb: true,
-    notes: 'Normalised priority-market operator reference.',
+    notes: null,
   })),
   aggregators: [
     ...market.aggregators.local.map((name) => ({
       name,
       scope: 'local',
       status: 'listed',
-      notes: 'Normalised local aggregator reference.',
+      notes: null,
     })),
     ...market.aggregators.international.map((name) => ({
       name,
       scope: 'international',
       status: 'listed',
-      notes: 'Normalised international aggregator reference.',
+      notes: null,
     })),
   ],
   capabilities: {
@@ -804,6 +875,7 @@ const africaPriorityMarkets = {
   }),
   NA: normalizeMarket({
     marketScore: 57,
+    subscriberEstimate: '~2.58M active SIMs (Q4 2024, CRAN quarterly data)',
     confidence: 'medium',
     marketStatus: {
       dcbStatus: 'Live',
@@ -907,12 +979,7 @@ const dataset = countries
     const parsed = parsedMasterMarkets[country.cca2]
     const enriched = africaPriorityMarkets[country.cca2]
 
-    return {
-      ...base,
-      ...(parsed ?? {}),
-      ...(enriched ?? {}),
-      lastUpdated: generatedAt,
-    }
+    return mergeMarketRecord(base, parsed, enriched)
   })
   .sort((left, right) => left.country.localeCompare(right.country))
 
