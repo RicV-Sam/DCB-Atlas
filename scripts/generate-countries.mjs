@@ -88,13 +88,13 @@ const normalizeMarket = (market) => ({
   sources: [
     {
       type: 'normalised-dataset',
-      label: 'Africa Top 10 normalised editorial dataset',
+      label: 'Africa priority normalised editorial dataset',
       confidence: normalizeConfidence(market.confidence),
     },
   ],
 })
 
-const africaTop10 = {
+const africaPriorityMarkets = {
   ZA: normalizeMarket({
     marketScore: 82,
     confidence: 'high',
@@ -465,6 +465,376 @@ const africaTop10 = {
     recommendedEntry: 'aggregator',
     bestVerticals: ['gaming', 'education'],
   }),
+  DZ: normalizeMarket({
+    marketScore: 68,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Medium',
+      risk: 'medium',
+    },
+    commercial: {
+      arpuLevel: 'medium',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly', 'monthly'],
+    },
+    operators: ['Mobilis', 'Djezzy', 'Ooredoo Algeria'],
+    aggregators: {
+      local: [],
+      international: ['Bango', 'Digital Virgo'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'growing',
+      heSupport: 'medium',
+    },
+    regulation: {
+      regulator: 'ARPCE',
+      strictness: 'medium',
+      notes: 'Telecom content controls and approvals can delay launch timing.',
+    },
+    insight:
+      'Treat Algeria as a medium-upside market where launch speed depends on approvals and local execution support. Start with controlled pilots before scaling paid acquisition.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['gaming', 'video', 'sports'],
+  }),
+  ET: normalizeMarket({
+    marketScore: 62,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Low',
+      risk: 'high',
+    },
+    commercial: {
+      arpuLevel: 'low',
+      conversionDifficulty: 'hard',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['Ethio Telecom', 'Safaricom Ethiopia'],
+    aggregators: {
+      local: [],
+      international: ['Bango'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'growing',
+      heSupport: 'low',
+    },
+    regulation: {
+      regulator: 'ECA',
+      strictness: 'high',
+      notes: 'Market liberalization is evolving and execution conditions can shift quickly.',
+    },
+    insight:
+      'Ethiopia has long-term upside but near-term execution risk. Use low-cost pilot traffic, validate billing reliability early, and avoid aggressive scaling until operational stability improves.',
+    opportunity: 'medium',
+    entryEase: 'difficult',
+    recommendedEntry: 'hybrid',
+    bestVerticals: ['education', 'music', 'sports'],
+  }),
+  AO: normalizeMarket({
+    marketScore: 64,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Medium',
+      risk: 'medium',
+    },
+    commercial: {
+      arpuLevel: 'medium',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['Unitel', 'Africell Angola', 'Movicel'],
+    aggregators: {
+      local: [],
+      international: ['Digital Virgo', 'Bango'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'emerging',
+      heSupport: 'medium',
+    },
+    regulation: {
+      regulator: 'INACOM',
+      strictness: 'medium',
+      notes: 'Licensing and local partner quality are key execution constraints.',
+    },
+    insight:
+      'Angola can deliver steady returns when partner selection is strong. Focus on weekly plans, fraud controls, and localized lifecycle messaging before broad campaign expansion.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['gaming', 'music', 'entertainment'],
+  }),
+  TN: normalizeMarket({
+    marketScore: 71,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Medium',
+      risk: 'medium',
+    },
+    commercial: {
+      arpuLevel: 'medium',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly', 'monthly'],
+    },
+    operators: ['Tunisie Telecom', 'Ooredoo Tunisia', 'Orange Tunisia'],
+    aggregators: {
+      local: [],
+      international: ['Bango', 'DIMOCO'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'growing',
+      heSupport: 'medium',
+    },
+    regulation: {
+      regulator: 'INT',
+      strictness: 'medium',
+      notes: 'Compliance is manageable but content and billing transparency still matter.',
+    },
+    insight:
+      'Tunisia is a practical North Africa expansion step. Run aggregator-first, prioritize transparent offer flows, and optimize conversion through localized creatives and short billing cycles.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['gaming', 'education', 'video'],
+  }),
+  CM: normalizeMarket({
+    marketScore: 67,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Medium',
+      risk: 'medium',
+    },
+    commercial: {
+      arpuLevel: 'low',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['MTN Cameroon', 'Orange Cameroon', 'Camtel'],
+    aggregators: {
+      local: [],
+      international: ['Digital Virgo', 'Bango'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'strong',
+      heSupport: 'medium',
+    },
+    regulation: {
+      regulator: 'ART Cameroon',
+      strictness: 'medium',
+      notes: 'Regional and operator-level differences can affect execution consistency.',
+    },
+    insight:
+      'Cameroon supports measured growth strategies, especially with bilingual localization. Keep acquisition controlled, test operator-specific journeys, and use retention-heavy product design to protect margins.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['music', 'gaming', 'sports'],
+  }),
+  ZM: normalizeMarket({
+    marketScore: 63,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Medium',
+      risk: 'medium',
+    },
+    commercial: {
+      arpuLevel: 'low',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['MTN Zambia', 'Airtel Zambia', 'Zamtel'],
+    aggregators: {
+      local: [],
+      international: ['Bango', 'Digital Virgo'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'growing',
+      heSupport: 'medium',
+    },
+    regulation: {
+      regulator: 'ZICTA',
+      strictness: 'medium',
+      notes: 'Operational reliability varies by partner and route setup.',
+    },
+    insight:
+      'Zambia is best approached as a selective medium-return market. Use pilot campaigns, prioritize billing stability, and scale only after strong repeat-payment behavior is proven.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['sports', 'education', 'entertainment'],
+  }),
+  RW: normalizeMarket({
+    marketScore: 60,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Medium',
+      risk: 'low',
+    },
+    commercial: {
+      arpuLevel: 'low',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['MTN Rwanda', 'Airtel Rwanda'],
+    aggregators: {
+      local: [],
+      international: ['Bango'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'strong',
+      heSupport: 'medium',
+    },
+    regulation: {
+      regulator: 'RURA',
+      strictness: 'medium',
+      notes: 'Regulatory climate is relatively stable for controlled digital launches.',
+    },
+    insight:
+      'Rwanda is a low-risk, smaller-scale market suited to disciplined testing. Keep product scope narrow, align pricing to wallet habits, and use it as an operational benchmark market.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'hybrid',
+    bestVerticals: ['education', 'fintech', 'gaming'],
+  }),
+  MZ: normalizeMarket({
+    marketScore: 59,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Low',
+      risk: 'medium',
+    },
+    commercial: {
+      arpuLevel: 'low',
+      conversionDifficulty: 'hard',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['Vodacom Mozambique', 'Movitel', 'Tmcel'],
+    aggregators: {
+      local: [],
+      international: ['Digital Virgo'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'growing',
+      heSupport: 'low',
+    },
+    regulation: {
+      regulator: 'INCM',
+      strictness: 'medium',
+      notes: 'Execution complexity is mostly operational rather than policy-driven.',
+    },
+    insight:
+      'Mozambique requires conservative rollout assumptions. Start with limited offers, monitor payment reliability closely, and avoid scaling until conversion and retention stabilize across operator routes.',
+    opportunity: 'medium',
+    entryEase: 'difficult',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['sports', 'music', 'entertainment'],
+  }),
+  BW: normalizeMarket({
+    marketScore: 58,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Low',
+      risk: 'low',
+    },
+    commercial: {
+      arpuLevel: 'medium',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['Mascom', 'Orange Botswana', 'BTC Mobile'],
+    aggregators: {
+      local: [],
+      international: ['Bango'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'emerging',
+      heSupport: 'low',
+    },
+    regulation: {
+      regulator: 'BOCRA',
+      strictness: 'medium',
+      notes: 'Stable operating environment but limited scale potential.',
+    },
+    insight:
+      'Botswana is a lower-risk but smaller opportunity market. Use it for focused verticals and efficient campaign structures rather than scale-heavy strategies.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['education', 'subscriptions', 'gaming'],
+  }),
+  NA: normalizeMarket({
+    marketScore: 57,
+    confidence: 'medium',
+    marketStatus: {
+      dcbStatus: 'Live',
+      signalStrength: 'Medium',
+      readiness: 'Low',
+      risk: 'low',
+    },
+    commercial: {
+      arpuLevel: 'medium',
+      conversionDifficulty: 'moderate',
+      pricingModel: ['daily', 'weekly'],
+    },
+    operators: ['MTC', 'TN Mobile', 'Paratus Mobile'],
+    aggregators: {
+      local: [],
+      international: ['Bango'],
+    },
+    capabilities: {
+      dcb: true,
+      psms: true,
+      wallet: 'emerging',
+      heSupport: 'low',
+    },
+    regulation: {
+      regulator: 'CRAN',
+      strictness: 'medium',
+      notes: 'Regulatory environment is generally stable with moderate compliance overhead.',
+    },
+    insight:
+      'Namibia is suitable for tightly scoped launches with clear unit economics. Keep spend disciplined, optimize for retention, and treat it as a supporting market rather than a primary growth engine.',
+    opportunity: 'medium',
+    entryEase: 'moderate',
+    recommendedEntry: 'aggregator',
+    bestVerticals: ['subscriptions', 'education', 'sports'],
+  }),
 }
 
 const researchPendingNote =
@@ -530,7 +900,7 @@ const dataset = countries
   .filter((country) => country.cca2 !== 'AQ')
   .map((country) => {
     const base = baseRecord(country)
-    const enriched = africaTop10[country.cca2]
+    const enriched = africaPriorityMarkets[country.cca2]
 
     return enriched
       ? { ...base, ...enriched, lastUpdated: '2026-04-19' }

@@ -167,50 +167,90 @@
     "country": "Algeria",
     "slug": "algeria",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 68,
+    "riskScore": 54,
+    "opportunityScore": 66,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "medium",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "medium",
+      "risk": "medium"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "medium",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly",
+        "monthly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "growing",
+      "heSupport": "medium"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "gaming",
+      "video",
+      "sports"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "Mobilis",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Djezzy",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Ooredoo Algeria",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      },
+      {
+        "name": "Digital Virgo",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Treat Algeria as a medium-upside market where launch speed depends on approvals and local execution support. Start with controlled pilots before scaling paid acquisition.",
+    "commercialNote": "Recommended route: aggregator. Treat Algeria as a medium-upside market where launch speed depends on approvals and local execution support. Start with controlled pilots before scaling paid acquisition.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "ARPCE",
+      "strictness": "medium",
+      "riskLevel": "medium",
+      "notes": "Telecom content controls and approvals can delay launch timing."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -329,50 +369,89 @@
     "country": "Angola",
     "slug": "angola",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 64,
+    "riskScore": 54,
+    "opportunityScore": 62,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "medium",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "medium",
+      "risk": "medium"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "medium",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "emerging",
+      "heSupport": "medium"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "gaming",
+      "music",
+      "entertainment"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "Unitel",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Africell Angola",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Movicel",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Digital Virgo",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      },
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Angola can deliver steady returns when partner selection is strong. Focus on weekly plans, fraud controls, and localized lifecycle messaging before broad campaign expansion.",
+    "commercialNote": "Recommended route: aggregator. Angola can deliver steady returns when partner selection is strong. Focus on weekly plans, fraud controls, and localized lifecycle messaging before broad campaign expansion.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "INACOM",
+      "strictness": "medium",
+      "riskLevel": "medium",
+      "notes": "Licensing and local partner quality are key execution constraints."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -1463,50 +1542,83 @@
     "country": "Botswana",
     "slug": "botswana",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 58,
+    "riskScore": 32,
+    "opportunityScore": 60,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "low",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "low",
+      "risk": "low"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "medium",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "emerging",
+      "heSupport": "low"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "education",
+      "subscriptions",
+      "gaming"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "Mascom",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Orange Botswana",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "BTC Mobile",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Botswana is a lower-risk but smaller opportunity market. Use it for focused verticals and efficient campaign structures rather than scale-heavy strategies.",
+    "commercialNote": "Recommended route: aggregator. Botswana is a lower-risk but smaller opportunity market. Use it for focused verticals and efficient campaign structures rather than scale-heavy strategies.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "BOCRA",
+      "strictness": "medium",
+      "riskLevel": "low",
+      "notes": "Stable operating environment but limited scale potential."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -2003,50 +2115,89 @@
     "country": "Cameroon",
     "slug": "cameroon",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 67,
+    "riskScore": 54,
+    "opportunityScore": 65,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "medium",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "medium",
+      "risk": "medium"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "low",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "strong",
+      "heSupport": "medium"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "music",
+      "gaming",
+      "sports"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "MTN Cameroon",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Orange Cameroon",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Camtel",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Digital Virgo",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      },
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Cameroon supports measured growth strategies, especially with bilingual localization. Keep acquisition controlled, test operator-specific journeys, and use retention-heavy product design to protect margins.",
+    "commercialNote": "Recommended route: aggregator. Cameroon supports measured growth strategies, especially with bilingual localization. Keep acquisition controlled, test operator-specific journeys, and use retention-heavy product design to protect margins.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "ART Cameroon",
+      "strictness": "medium",
+      "riskLevel": "medium",
+      "notes": "Regional and operator-level differences can affect execution consistency."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -3501,7 +3652,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "high"
       }
     ],
@@ -3783,50 +3934,77 @@
     "country": "Ethiopia",
     "slug": "ethiopia",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 62,
+    "riskScore": 74,
+    "opportunityScore": 60,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "low",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "low",
+      "risk": "high"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "low",
+      "conversionDifficulty": "hard",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "growing",
+      "heSupport": "low"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "difficult",
+    "recommendedEntry": "hybrid",
+    "bestVerticals": [
+      "education",
+      "music",
+      "sports"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "Ethio Telecom",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Safaricom Ethiopia",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Ethiopia has long-term upside but near-term execution risk. Use low-cost pilot traffic, validate billing reliability early, and avoid aggressive scaling until operational stability improves.",
+    "commercialNote": "Recommended route: hybrid. Ethiopia has long-term upside but near-term execution risk. Use low-cost pilot traffic, validate billing reliability early, and avoid aggressive scaling until operational stability improves.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "ECA",
+      "strictness": "high",
+      "riskLevel": "high",
+      "notes": "Market liberalization is evolving and execution conditions can shift quickly."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -4572,7 +4750,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "medium-high"
       }
     ],
@@ -6021,7 +6199,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "medium-high"
       }
     ],
@@ -6391,7 +6569,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "high"
       }
     ],
@@ -8218,7 +8396,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "high"
       }
     ],
@@ -8230,50 +8408,83 @@
     "country": "Mozambique",
     "slug": "mozambique",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 59,
+    "riskScore": 54,
+    "opportunityScore": 60,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "low",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "low",
+      "risk": "medium"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "low",
+      "conversionDifficulty": "hard",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "growing",
+      "heSupport": "low"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "difficult",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "sports",
+      "music",
+      "entertainment"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "Vodacom Mozambique",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Movitel",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Tmcel",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Digital Virgo",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Mozambique requires conservative rollout assumptions. Start with limited offers, monitor payment reliability closely, and avoid scaling until conversion and retention stabilize across operator routes.",
+    "commercialNote": "Recommended route: aggregator. Mozambique requires conservative rollout assumptions. Start with limited offers, monitor payment reliability closely, and avoid scaling until conversion and retention stabilize across operator routes.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "INCM",
+      "strictness": "medium",
+      "riskLevel": "medium",
+      "notes": "Execution complexity is mostly operational rather than policy-driven."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -8338,50 +8549,83 @@
     "country": "Namibia",
     "slug": "namibia",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 57,
+    "riskScore": 32,
+    "opportunityScore": 60,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "low",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "low",
+      "risk": "low"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "medium",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "emerging",
+      "heSupport": "low"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "subscriptions",
+      "education",
+      "sports"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "MTC",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "TN Mobile",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Paratus Mobile",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Namibia is suitable for tightly scoped launches with clear unit economics. Keep spend disciplined, optimize for retention, and treat it as a supporting market rather than a primary growth engine.",
+    "commercialNote": "Recommended route: aggregator. Namibia is suitable for tightly scoped launches with clear unit economics. Keep spend disciplined, optimize for retention, and treat it as a supporting market rather than a primary growth engine.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "CRAN",
+      "strictness": "medium",
+      "riskLevel": "low",
+      "notes": "Regulatory environment is generally stable with moderate compliance overhead."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -8876,7 +9120,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "high"
       }
     ],
@@ -10184,50 +10428,77 @@
     "country": "Rwanda",
     "slug": "rwanda",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 60,
+    "riskScore": 32,
+    "opportunityScore": 60,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "medium",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "medium",
+      "risk": "low"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "low",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "strong",
+      "heSupport": "medium"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "hybrid",
+    "bestVerticals": [
+      "education",
+      "fintech",
+      "gaming"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "MTN Rwanda",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Airtel Rwanda",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Rwanda is a low-risk, smaller-scale market suited to disciplined testing. Keep product scope narrow, align pricing to wallet habits, and use it as an operational benchmark market.",
+    "commercialNote": "Recommended route: hybrid. Rwanda is a low-risk, smaller-scale market suited to disciplined testing. Keep product scope narrow, align pricing to wallet habits, and use it as an operational benchmark market.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "RURA",
+      "strictness": "medium",
+      "riskLevel": "low",
+      "notes": "Regulatory climate is relatively stable for controlled digital launches."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -10918,7 +11189,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "medium-high"
       }
     ],
@@ -11528,7 +11799,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "high"
       }
     ],
@@ -12329,7 +12600,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "medium-high"
       }
     ],
@@ -12665,50 +12936,90 @@
     "country": "Tunisia",
     "slug": "tunisia",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 71,
+    "riskScore": 54,
+    "opportunityScore": 69,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "medium",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "medium",
+      "risk": "medium"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "medium",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly",
+        "monthly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "growing",
+      "heSupport": "medium"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "gaming",
+      "education",
+      "video"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "Tunisie Telecom",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Ooredoo Tunisia",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Orange Tunisia",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      },
+      {
+        "name": "DIMOCO",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Tunisia is a practical North Africa expansion step. Run aggregator-first, prioritize transparent offer flows, and optimize conversion through localized creatives and short billing cycles.",
+    "commercialNote": "Recommended route: aggregator. Tunisia is a practical North Africa expansion step. Run aggregator-first, prioritize transparent offer flows, and optimize conversion through localized creatives and short billing cycles.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "INT",
+      "strictness": "medium",
+      "riskLevel": "medium",
+      "notes": "Compliance is manageable but content and billing transparency still matter."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
@@ -13014,7 +13325,7 @@
     "sources": [
       {
         "type": "normalised-dataset",
-        "label": "Africa Top 10 normalised editorial dataset",
+        "label": "Africa priority normalised editorial dataset",
         "confidence": "medium"
       }
     ],
@@ -13836,50 +14147,89 @@
     "country": "Zambia",
     "slug": "zambia",
     "region": "Africa",
-    "status": "research",
-    "marketScore": null,
-    "riskScore": null,
-    "opportunityScore": null,
+    "status": "live",
+    "marketScore": 63,
+    "riskScore": 54,
+    "opportunityScore": 61,
     "subscriberEstimate": null,
-    "dcbReadiness": "unknown",
-    "confidence": "pending",
+    "dcbReadiness": "medium",
+    "confidence": "medium",
     "marketStatus": {
-      "dcbStatus": "research",
-      "signalStrength": "unknown",
-      "readiness": "unknown",
-      "risk": "unknown"
+      "dcbStatus": "live",
+      "signalStrength": "medium",
+      "readiness": "medium",
+      "risk": "medium"
     },
     "commercial": {
-      "arpuLevel": "unknown",
-      "conversionDifficulty": "unknown",
-      "pricingModel": []
+      "arpuLevel": "low",
+      "conversionDifficulty": "moderate",
+      "pricingModel": [
+        "daily",
+        "weekly"
+      ]
     },
     "capabilities": {
-      "dcb": false,
-      "psms": false,
-      "wallet": "unknown",
-      "heSupport": "unknown"
+      "dcb": true,
+      "psms": true,
+      "wallet": "growing",
+      "heSupport": "medium"
     },
-    "opportunity": "unknown",
-    "entryEase": "unknown",
-    "recommendedEntry": "research",
-    "bestVerticals": [],
+    "opportunity": "medium",
+    "entryEase": "moderate",
+    "recommendedEntry": "aggregator",
+    "bestVerticals": [
+      "sports",
+      "education",
+      "entertainment"
+    ],
     "lastUpdated": "2026-04-19",
-    "operators": [],
-    "aggregators": [],
-    "notes": "Research pending. This placeholder entry exists so the atlas can show global coverage while the public market profile is still being enriched.",
-    "commercialNote": "Public market briefing not yet published. Contact DCB Atlas for a tailored qualification pass.",
+    "operators": [
+      {
+        "name": "MTN Zambia",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Airtel Zambia",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      },
+      {
+        "name": "Zamtel",
+        "subscriberEstimate": null,
+        "dcb": true,
+        "notes": "Normalised priority-market operator reference."
+      }
+    ],
+    "aggregators": [
+      {
+        "name": "Bango",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      },
+      {
+        "name": "Digital Virgo",
+        "scope": "international",
+        "status": "listed",
+        "notes": "Normalised international aggregator reference."
+      }
+    ],
+    "notes": "Zambia is best approached as a selective medium-return market. Use pilot campaigns, prioritize billing stability, and scale only after strong repeat-payment behavior is proven.",
+    "commercialNote": "Recommended route: aggregator. Zambia is best approached as a selective medium-return market. Use pilot campaigns, prioritize billing stability, and scale only after strong repeat-payment behavior is proven.",
     "regulation": {
-      "regulator": "Pending",
-      "strictness": "unknown",
-      "riskLevel": "unknown",
-      "notes": "Public-facing compliance summary not yet added."
+      "regulator": "ZICTA",
+      "strictness": "medium",
+      "riskLevel": "medium",
+      "notes": "Operational reliability varies by partner and route setup."
     },
     "sources": [
       {
-        "type": "placeholder",
-        "label": "Research pending placeholder",
-        "confidence": "pending"
+        "type": "normalised-dataset",
+        "label": "Africa priority normalised editorial dataset",
+        "confidence": "medium"
       }
     ],
     "privateTags": []
