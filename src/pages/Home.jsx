@@ -117,6 +117,39 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="atlas-panel overflow-hidden">
+        <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
+          <img
+            src={`${import.meta.env.BASE_URL}assets/insights/chrome-https-msisdn-header-enrichment-dcb-impact/dcb-wake-up-call.png`}
+            alt="The DCB wake-up call: Chrome HTTPS move and operator revenue"
+            className="h-full min-h-72 w-full object-cover"
+            loading="lazy"
+          />
+          <div className="px-6 py-8 sm:px-8">
+            <p className="atlas-eyebrow">Latest insight</p>
+            <h2 className="atlas-title mt-3 max-w-3xl text-3xl font-semibold text-[#0d1b24] sm:text-4xl">
+              Chrome HTTPS, MSISDN Header Enrichment and DCB: What Operators Need to Know
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-[#35505f]">
+              A plain-English guide for operators, aggregators, merchants, and VAS
+              teams on why HTTPS-first browsing changes legacy Header Enrichment
+              assumptions, and what to measure before revenue drops.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link
+                className="atlas-button-primary"
+                to="/insights/chrome-https-msisdn-header-enrichment-dcb-impact"
+              >
+                Read the analysis
+              </Link>
+              <Link className="atlas-button-secondary" to="/insights">
+                View all insights
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {quickStats.map((stat) => (
           <QuickStat key={stat.label} {...stat} />

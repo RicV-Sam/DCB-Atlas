@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { PageMetadata } from '../components/shared/PageMetadata'
 import { SectionHeading } from '../components/shared/SectionHeading'
-import { buildBreadcrumbSchema, buildCollectionSchema } from '../utils/seo'
+import { SITE_URL, buildBreadcrumbSchema, buildCollectionSchema } from '../utils/seo'
 
 const insightsDescription =
   'Commercially practical DCB, VAS, operator billing, and market-entry insight for mobile operators, aggregators, and merchants.'
@@ -13,6 +13,7 @@ export function InsightsPage() {
         title="Insights"
         description={insightsDescription}
         pathname="/insights"
+        image={`${SITE_URL}/assets/insights/chrome-https-msisdn-header-enrichment-dcb-impact/dcb-wake-up-call.png`}
         structuredData={[
           buildCollectionSchema({
             name: 'DCB Atlas Insights',

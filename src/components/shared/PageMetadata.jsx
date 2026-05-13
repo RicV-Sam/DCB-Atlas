@@ -34,6 +34,7 @@ export function PageMetadata({
   type = 'website',
   structuredData = [],
   appendSiteName = true,
+  image,
 }) {
   const pageTitle = title
     ? appendSiteName
@@ -72,7 +73,7 @@ export function PageMetadata({
     })
     upsertMeta('meta[name="twitter:card"]', {
       name: 'twitter:card',
-      content: 'summary',
+      content: image ? 'summary_large_image' : 'summary',
     })
     upsertMeta('meta[name="twitter:title"]', {
       name: 'twitter:title',
@@ -82,11 +83,21 @@ export function PageMetadata({
       name: 'twitter:description',
       content: description,
     })
+    if (image) {
+      upsertMeta('meta[property="og:image"]', {
+        property: 'og:image',
+        content: image,
+      })
+      upsertMeta('meta[name="twitter:image"]', {
+        name: 'twitter:image',
+        content: image,
+      })
+    }
     upsertLink('link[rel="canonical"]', {
       rel: 'canonical',
       href: canonical,
     })
-  }, [canonical, description, pageTitle, type])
+  }, [canonical, description, image, pageTitle, type])
 
   return (
     <>

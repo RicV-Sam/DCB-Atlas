@@ -118,6 +118,7 @@ export function ChromeHttpsHeaderEnrichmentArticle() {
         pathname={articlePath}
         type="article"
         appendSiteName={false}
+        image={`${absoluteAssetRoot}dcb-wake-up-call.png`}
         structuredData={[articleSchema, breadcrumbSchema]}
       />
 
