@@ -15,7 +15,7 @@ const absoluteAssetRoot = `${SITE_URL}/assets/insights/${slug}/`
 const title =
   'Chrome HTTPS, MSISDN Header Enrichment and DCB: What Operators Need to Know'
 const description =
-  'A plain-English guide to how Chrome’s HTTPS-first move may impact MSISDN Header Enrichment, Direct Carrier Billing conversion, and operator VAS revenue — plus the possible solutions.'
+  "A plain-English guide to how Chrome's HTTPS-first move may impact MSISDN Header Enrichment, Direct Carrier Billing conversion, and operator VAS revenue - plus the possible solutions."
 
 const images = {
   hero: {
@@ -69,8 +69,13 @@ const breadcrumbSchema = buildBreadcrumbSchema([
 
 function ArticleImage({ image, caption }) {
   return (
-    <figure className="my-8 overflow-hidden rounded-[28px] border border-[#12354a]/10 bg-white/75 shadow-[0_18px_50px_rgba(17,35,49,0.1)]">
-      <img src={image.src} alt={image.alt} className="w-full" loading="lazy" />
+    <figure className="my-8 overflow-hidden rounded-[24px] border border-[#12354a]/10 bg-white/85 shadow-[0_18px_50px_rgba(17,35,49,0.08)]">
+      <img
+        src={image.src}
+        alt={image.alt}
+        className="mx-auto max-h-[520px] w-full object-contain"
+        loading="lazy"
+      />
       {caption ? (
         <figcaption className="px-5 py-4 text-sm leading-6 text-[#5f6a72]">
           {caption}
@@ -122,14 +127,20 @@ export function ChromeHttpsHeaderEnrichmentArticle() {
         structuredData={[articleSchema, breadcrumbSchema]}
       />
 
-      <section className="atlas-panel overflow-hidden">
-        <img src={images.hero.src} alt={images.hero.alt} className="w-full" />
-        <div className="px-6 py-8 sm:px-8 sm:py-10">
+      <section className="atlas-panel grid overflow-hidden lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="flex items-start bg-[#061735] p-4 sm:p-6">
+          <img
+            src={images.hero.src}
+            alt={images.hero.alt}
+            className="mx-auto max-h-[440px] w-full rounded-[20px] object-contain"
+          />
+        </div>
+        <div className="px-6 py-8 sm:px-8 sm:py-10 lg:flex lg:flex-col lg:justify-center">
           <Link className="atlas-link" to="/insights">
             Back to insights
           </Link>
           <p className="atlas-eyebrow mt-6">Operator billing transition</p>
-          <h1 className="atlas-title mt-3 max-w-5xl text-4xl font-semibold leading-tight text-[#0d1b24] sm:text-6xl">
+          <h1 className="atlas-title mt-3 max-w-5xl text-4xl font-semibold leading-tight text-[#0d1b24] sm:text-5xl">
             {title}
           </h1>
           <p className="mt-5 max-w-4xl text-lg leading-8 text-[#35505f]">
