@@ -59,6 +59,19 @@ export const buildArticleSchema = ({
   },
 })
 
+export const buildDefinedTermSchema = ({ name, description, pathname }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTerm',
+  name,
+  description,
+  url: getCanonicalUrl(pathname),
+  inDefinedTermSet: {
+    '@type': 'DefinedTermSet',
+    name: `${SITE_NAME} Glossary`,
+    url: getCanonicalUrl('/glossary/'),
+  },
+})
+
 export const buildBreadcrumbSchema = (items) => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',

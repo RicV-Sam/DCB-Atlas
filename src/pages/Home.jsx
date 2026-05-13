@@ -117,36 +117,68 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="atlas-panel overflow-hidden">
-        <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
-          <img
-            src={`${import.meta.env.BASE_URL}assets/insights/chrome-https-msisdn-header-enrichment-dcb-impact/dcb-wake-up-call.png`}
-            alt="The DCB wake-up call: Chrome HTTPS move and operator revenue"
-            className="h-full min-h-72 w-full object-cover"
-            loading="lazy"
-          />
-          <div className="px-6 py-8 sm:px-8">
-            <p className="atlas-eyebrow">Latest insight</p>
-            <h2 className="atlas-title mt-3 max-w-3xl text-3xl font-semibold text-[#0d1b24] sm:text-4xl">
-              Chrome HTTPS, MSISDN Header Enrichment and DCB: What Operators Need to Know
+      <section className="space-y-5">
+        <SectionHeading
+          eyebrow="Start here"
+          title="Learn the model, then compare the markets"
+          description="Use these plain-English resources to understand DCB, core operator billing terms, and the latest identity changes affecting conversion."
+        />
+        <div className="grid gap-5 lg:grid-cols-3">
+          <article className="atlas-panel px-6 py-6">
+            <p className="atlas-eyebrow">Evergreen guide</p>
+            <h2 className="atlas-title mt-3 text-3xl font-semibold text-[#0d1b24]">
+              What is Direct Carrier Billing?
             </h2>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-[#35505f]">
-              A plain-English guide for operators, aggregators, merchants, and VAS
-              teams on why HTTPS-first browsing changes legacy Header Enrichment
-              assumptions, and what to measure before revenue drops.
+            <p className="mt-4 text-sm leading-7 text-[#35505f]">
+              A practical introduction to DCB, user journeys, operator roles,
+              aggregators, compliance basics, and revenue-share models.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Link
+              className="atlas-button-primary mt-5"
+              to="/resources/what-is-direct-carrier-billing"
+            >
+              Read the guide
+            </Link>
+          </article>
+
+          <article className="atlas-panel px-6 py-6">
+            <p className="atlas-eyebrow">Glossary</p>
+            <h2 className="atlas-title mt-3 text-3xl font-semibold text-[#0d1b24]">
+              DCB and VAS terms
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-[#35505f]">
+              Plain-English definitions for MSISDN, Header Enrichment, OTP,
+              CAMARA, aggregators, and related operator billing concepts.
+            </p>
+            <Link className="atlas-button-secondary mt-5" to="/glossary">
+              Open glossary
+            </Link>
+          </article>
+
+          <article className="atlas-panel overflow-hidden">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/insights/chrome-https-msisdn-header-enrichment-dcb-impact/dcb-wake-up-call.png`}
+              alt="The DCB wake-up call: Chrome HTTPS move and operator revenue"
+              className="aspect-[16/9] w-full object-cover"
+              loading="lazy"
+            />
+            <div className="px-6 py-6">
+              <p className="atlas-eyebrow">Latest insight</p>
+              <h2 className="atlas-title mt-3 text-2xl font-semibold text-[#0d1b24]">
+                Chrome HTTPS and Header Enrichment
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-[#35505f]">
+                Why HTTPS-first browsing changes legacy identification assumptions
+                and what operators should measure before conversion drops.
+              </p>
               <Link
-                className="atlas-button-primary"
+                className="atlas-button-secondary mt-5"
                 to="/insights/chrome-https-msisdn-header-enrichment-dcb-impact"
               >
-                Read the analysis
-              </Link>
-              <Link className="atlas-button-secondary" to="/insights">
-                View all insights
+                Read analysis
               </Link>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
