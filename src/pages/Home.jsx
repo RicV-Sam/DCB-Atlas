@@ -122,6 +122,11 @@ export function HomePage() {
           eyebrow="Start here"
           title="Learn the model, then compare the markets"
           description="Use these plain-English resources to understand DCB, core operator billing terms, and the latest identity changes affecting conversion."
+          action={
+            <Link className="atlas-button-secondary" to="/resources">
+              Open resource hub
+            </Link>
+          }
         />
         <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           <article className="atlas-panel px-6 py-6">
@@ -203,6 +208,23 @@ export function HomePage() {
               to="/resources/dcb-vs-card-payments-vs-wallets"
             >
               Compare methods
+            </Link>
+          </article>
+
+          <article className="atlas-panel px-6 py-6">
+            <p className="atlas-eyebrow">Commercial model</p>
+            <h2 className="atlas-title mt-3 text-3xl font-semibold text-[#0d1b24]">
+              Operator revenue share
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-[#35505f]">
+              A plain-English guide to gross billed amount, operator share,
+              aggregator share, merchant net revenue, refunds, and settlement timing.
+            </p>
+            <Link
+              className="atlas-button-secondary mt-5"
+              to="/resources/operator-revenue-share-models"
+            >
+              Follow the money
             </Link>
           </article>
 

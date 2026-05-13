@@ -202,6 +202,13 @@ export function PaymentsComparisonPage() {
                 policies, fraud tooling and local payment habits can be just as
                 important.
               </p>
+              <p>
+                For DCB-specific commercial modelling, read{' '}
+                <Link className="atlas-link" to="/resources/operator-revenue-share-models">
+                  Operator Revenue Share Models in DCB
+                </Link>
+                .
+              </p>
             </ComparisonSection>
 
             <ComparisonSection eyebrow="6. Compliance" title="Compliance and user protection">
@@ -248,6 +255,9 @@ export function PaymentsComparisonPage() {
             <div className="rounded-[24px] bg-[#12354a] p-5 text-sm leading-7 text-[#f3ead9]">
               <p className="atlas-eyebrow text-[#d8ba7a]">Related resources</p>
               <div className="mt-4 flex flex-col gap-3">
+                <Link className="font-semibold text-white" to="/resources">
+                  Resource hub
+                </Link>
                 <Link className="font-semibold text-white" to="/resources/what-is-direct-carrier-billing">
                   What is Direct Carrier Billing?
                 </Link>
@@ -256,6 +266,9 @@ export function PaymentsComparisonPage() {
                 </Link>
                 <Link className="font-semibold text-white" to="/resources/dcb-compliance-basics">
                   DCB Compliance Basics
+                </Link>
+                <Link className="font-semibold text-white" to="/resources/operator-revenue-share-models">
+                  Operator Revenue Share
                 </Link>
               </div>
             </div>

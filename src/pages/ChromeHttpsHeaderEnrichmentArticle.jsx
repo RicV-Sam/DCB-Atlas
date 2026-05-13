@@ -476,6 +476,10 @@ export function ChromeHttpsHeaderEnrichmentArticle() {
             <div className="mt-6 rounded-[22px] bg-white/70 p-4 text-sm leading-6 text-[#35505f]">
               <p className="font-semibold text-[#0d1b24]">Related Atlas pages</p>
               <div className="mt-3 flex flex-col gap-2">
+                <Link className="atlas-link" to="/resources">Resource hub</Link>
+                <Link className="atlas-link" to="/resources/what-is-direct-carrier-billing">
+                  What is DCB?
+                </Link>
                 <Link className="atlas-link" to="/markets">DCB market directory</Link>
                 <Link className="atlas-link" to="/methodology">Atlas methodology</Link>
               </div>

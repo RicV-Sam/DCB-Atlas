@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 const navItems = [
   { label: 'Atlas', to: '/' },
   { label: 'Markets', to: '/markets' },
-  { label: 'Resources', to: '/resources/what-is-direct-carrier-billing' },
+  { label: 'Resources', to: '/resources' },
   { label: 'Glossary', to: '/glossary' },
   { label: 'Insights', to: '/insights' },
   { label: 'Methodology', to: '/methodology' },
@@ -75,8 +75,8 @@ export function SiteLayout() {
             <NavLink className="atlas-link" to="/insights">
               Insights
             </NavLink>
-            <NavLink className="atlas-link" to="/resources/what-is-direct-carrier-billing">
-              DCB guide
+            <NavLink className="atlas-link" to="/resources">
+              Resources
             </NavLink>
             <NavLink className="atlas-link" to="/glossary">
               Glossary

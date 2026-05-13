@@ -288,7 +288,11 @@ export function HowDcbWorksPage() {
                 gross transactions, successful charges, failed charges, renewals,
                 refunds, adjustments, and the net payable amount. Percentages vary by
                 market and agreement, so any commercial model should be validated route
-                by route.
+                by route. For a deeper commercial explainer, read{' '}
+                <Link className="atlas-link" to="/resources/operator-revenue-share-models">
+                  Operator Revenue Share Models in DCB
+                </Link>
+                .
               </p>
             </FlowSection>
 
@@ -336,6 +340,9 @@ export function HowDcbWorksPage() {
             <div className="rounded-[24px] bg-[#12354a] p-5 text-sm leading-7 text-[#f3ead9]">
               <p className="atlas-eyebrow text-[#d8ba7a]">Start here</p>
               <div className="mt-4 flex flex-col gap-3">
+                <Link className="font-semibold text-white" to="/resources">
+                  Resource hub
+                </Link>
                 <Link className="font-semibold text-white" to="/resources/what-is-direct-carrier-billing">
                   What is Direct Carrier Billing?
                 </Link>
@@ -347,6 +354,12 @@ export function HowDcbWorksPage() {
                   to="/resources/dcb-vs-card-payments-vs-wallets"
                 >
                   DCB vs Cards vs Wallets
+                </Link>
+                <Link
+                  className="font-semibold text-white"
+                  to="/resources/operator-revenue-share-models"
+                >
+                  Operator Revenue Share
                 </Link>
                 <Link className="font-semibold text-white" to="/glossary/direct-carrier-billing">
                   DCB glossary

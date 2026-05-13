@@ -170,6 +170,17 @@ export function GlossaryTermPage() {
                 </Link>
               </div>
             ) : null}
+            {['direct-carrier-billing', 'aggregator'].includes(term.slug) ? (
+              <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
+                <p className="font-semibold text-[#0d1b24]">Commercial model</p>
+                <Link
+                  className="atlas-link mt-3"
+                  to="/resources/operator-revenue-share-models"
+                >
+                  Operator revenue share models in DCB
+                </Link>
+              </div>
+            ) : null}
             <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
               <p className="font-semibold text-[#0d1b24]">Related analysis</p>
               <Link className="atlas-link mt-3" to={chromeArticlePath}>

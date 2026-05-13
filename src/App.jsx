@@ -11,7 +11,9 @@ import { HowDcbWorksPage } from './pages/HowDcbWorks'
 import { InsightsPage } from './pages/Insights'
 import { MarketsPage } from './pages/Markets'
 import { MethodologyPage } from './pages/Methodology'
+import { OperatorRevenueShareModelsPage } from './pages/OperatorRevenueShareModels'
 import { PaymentsComparisonPage } from './pages/PaymentsComparison'
+import { ResourcesIndexPage } from './pages/ResourcesIndex'
 import { WhatIsDcbPage } from './pages/WhatIsDcb'
 
 function App() {
@@ -21,10 +23,12 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="markets" element={<MarketsPage />} />
         <Route path="markets/:slug" element={<CountryDetailPage />} />
+        <Route path="resources" element={<ResourcesIndexPage />} />
         <Route path="resources/what-is-direct-carrier-billing" element={<WhatIsDcbPage />} />
         <Route path="resources/dcb-compliance-basics" element={<DcbComplianceBasicsPage />} />
         <Route path="resources/how-direct-carrier-billing-works" element={<HowDcbWorksPage />} />
         <Route path="resources/dcb-vs-card-payments-vs-wallets" element={<PaymentsComparisonPage />} />
+        <Route path="resources/operator-revenue-share-models" element={<OperatorRevenueShareModelsPage />} />
         <Route path="glossary" element={<GlossaryIndexPage />} />
         <Route path="glossary/:slug" element={<GlossaryTermPage />} />
         <Route path="insights" element={<InsightsPage />} />

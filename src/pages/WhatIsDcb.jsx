@@ -167,6 +167,10 @@ export function WhatIsDcbPage() {
                 <Link className="atlas-link" to="/resources/dcb-vs-card-payments-vs-wallets">
                   DCB vs Card Payments vs Wallets
                 </Link>
+                . For the commercial waterfall behind operator billing, see{' '}
+                <Link className="atlas-link" to="/resources/operator-revenue-share-models">
+                  Operator Revenue Share Models
+                </Link>
                 .
               </p>
             </GuideSection>
@@ -241,6 +245,7 @@ export function WhatIsDcbPage() {
             <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
               <p className="font-semibold text-[#0d1b24]">Useful next pages</p>
               <div className="mt-3 flex flex-col gap-2">
+                <Link className="atlas-link" to="/resources">Resource hub</Link>
                 <Link className="atlas-link" to="/markets">Browse DCB markets</Link>
                 <Link className="atlas-link" to="/resources/how-direct-carrier-billing-works">
                   How DCB works
@@ -250,6 +255,9 @@ export function WhatIsDcbPage() {
                 </Link>
                 <Link className="atlas-link" to="/resources/dcb-vs-card-payments-vs-wallets">
                   DCB vs cards vs wallets
+                </Link>
+                <Link className="atlas-link" to="/resources/operator-revenue-share-models">
+                  Operator revenue share models
                 </Link>
                 <Link className="atlas-link" to="/methodology">Read methodology</Link>
                 <Link className="atlas-link" to="/about">About DCB Atlas</Link>

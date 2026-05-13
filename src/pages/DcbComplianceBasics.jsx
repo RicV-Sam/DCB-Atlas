@@ -284,6 +284,7 @@ export function DcbComplianceBasicsPage() {
             <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
               <p className="font-semibold text-[#0d1b24]">Useful next pages</p>
               <div className="mt-3 flex flex-col gap-2">
+                <Link className="atlas-link" to="/resources">Resource hub</Link>
                 <Link className="atlas-link" to="/resources/how-direct-carrier-billing-works">
                   How DCB works
                 </Link>
