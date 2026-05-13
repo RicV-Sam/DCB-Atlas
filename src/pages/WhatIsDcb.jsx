@@ -104,6 +104,13 @@ export function WhatIsDcbPage() {
                 charge, returns billing status, supports reporting, and helps settlement
                 between the parties.
               </p>
+              <p>
+                For a step-by-step operating view, see{' '}
+                <Link className="atlas-link" to="/resources/how-direct-carrier-billing-works">
+                  How Direct Carrier Billing Works
+                </Link>
+                .
+              </p>
             </GuideSection>
 
             <GuideSection eyebrow="3. The parties" title="Operators, aggregators, and merchants">
@@ -228,6 +235,9 @@ export function WhatIsDcbPage() {
               <p className="font-semibold text-[#0d1b24]">Useful next pages</p>
               <div className="mt-3 flex flex-col gap-2">
                 <Link className="atlas-link" to="/markets">Browse DCB markets</Link>
+                <Link className="atlas-link" to="/resources/how-direct-carrier-billing-works">
+                  How DCB works
+                </Link>
                 <Link className="atlas-link" to="/resources/dcb-compliance-basics">
                   Compliance basics
                 </Link>

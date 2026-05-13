@@ -7,6 +7,7 @@ import { HomePage } from './pages/Home'
 import { ChromeHttpsHeaderEnrichmentArticle } from './pages/ChromeHttpsHeaderEnrichmentArticle'
 import { GlossaryIndexPage } from './pages/GlossaryIndex'
 import { GlossaryTermPage } from './pages/GlossaryTerm'
+import { HowDcbWorksPage } from './pages/HowDcbWorks'
 import { InsightsPage } from './pages/Insights'
 import { MarketsPage } from './pages/Markets'
 import { MethodologyPage } from './pages/Methodology'
@@ -21,6 +22,7 @@ function App() {
         <Route path="markets/:slug" element={<CountryDetailPage />} />
         <Route path="resources/what-is-direct-carrier-billing" element={<WhatIsDcbPage />} />
         <Route path="resources/dcb-compliance-basics" element={<DcbComplianceBasicsPage />} />
+        <Route path="resources/how-direct-carrier-billing-works" element={<HowDcbWorksPage />} />
         <Route path="glossary" element={<GlossaryIndexPage />} />
         <Route path="glossary/:slug" element={<GlossaryTermPage />} />
         <Route path="insights" element={<InsightsPage />} />

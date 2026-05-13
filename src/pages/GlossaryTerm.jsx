@@ -10,6 +10,7 @@ const chromeArticlePath =
   '/insights/chrome-https-msisdn-header-enrichment-dcb-impact'
 
 const complianceRelatedTerms = new Set(['direct-carrier-billing', 'aggregator'])
+const flowRelatedTerms = new Set(['direct-carrier-billing', 'aggregator'])
 
 export function GlossaryTermPage() {
   const { slug } = useParams()
@@ -144,6 +145,17 @@ export function GlossaryTermPage() {
                 <p className="font-semibold text-[#0d1b24]">Compliance basics</p>
                 <Link className="atlas-link mt-3" to="/resources/dcb-compliance-basics">
                   Consent, pricing, unsubscribe and user protection
+                </Link>
+              </div>
+            ) : null}
+            {flowRelatedTerms.has(term.slug) ? (
+              <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
+                <p className="font-semibold text-[#0d1b24]">Flow guide</p>
+                <Link
+                  className="atlas-link mt-3"
+                  to="/resources/how-direct-carrier-billing-works"
+                >
+                  User journey, charging and settlement
                 </Link>
               </div>
             ) : null}
