@@ -123,7 +123,7 @@ export function HomePage() {
           title="Learn the model, then compare the markets"
           description="Use these plain-English resources to understand DCB, core operator billing terms, and the latest identity changes affecting conversion."
         />
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
           <article className="atlas-panel px-6 py-6">
             <p className="atlas-eyebrow">Evergreen guide</p>
             <h2 className="atlas-title mt-3 text-3xl font-semibold text-[#0d1b24]">
@@ -152,6 +152,23 @@ export function HomePage() {
             </p>
             <Link className="atlas-button-secondary mt-5" to="/glossary">
               Open glossary
+            </Link>
+          </article>
+
+          <article className="atlas-panel px-6 py-6">
+            <p className="atlas-eyebrow">Compliance</p>
+            <h2 className="atlas-title mt-3 text-3xl font-semibold text-[#0d1b24]">
+              DCB compliance basics
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-[#35505f]">
+              Consent, pricing visibility, unsubscribe paths, refunds, support,
+              fraud controls, and operator approval themes.
+            </p>
+            <Link
+              className="atlas-button-secondary mt-5"
+              to="/resources/dcb-compliance-basics"
+            >
+              Read compliance guide
             </Link>
           </article>
 

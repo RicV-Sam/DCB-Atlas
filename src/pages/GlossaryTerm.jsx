@@ -9,6 +9,8 @@ import {
 const chromeArticlePath =
   '/insights/chrome-https-msisdn-header-enrichment-dcb-impact'
 
+const complianceRelatedTerms = new Set(['direct-carrier-billing', 'aggregator'])
+
 export function GlossaryTermPage() {
   const { slug } = useParams()
   const term = getGlossaryTerm(slug)
@@ -137,6 +139,14 @@ export function GlossaryTermPage() {
                 Read the DCB guide
               </Link>
             </div>
+            {complianceRelatedTerms.has(term.slug) ? (
+              <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
+                <p className="font-semibold text-[#0d1b24]">Compliance basics</p>
+                <Link className="atlas-link mt-3" to="/resources/dcb-compliance-basics">
+                  Consent, pricing, unsubscribe and user protection
+                </Link>
+              </div>
+            ) : null}
             <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
               <p className="font-semibold text-[#0d1b24]">Related analysis</p>
               <Link className="atlas-link mt-3" to={chromeArticlePath}>

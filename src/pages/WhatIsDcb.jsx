@@ -172,6 +172,13 @@ export function WhatIsDcbPage() {
                 aggregators often respond by tightening rules, adding OTP, limiting
                 categories, or pausing merchants that create too much consumer harm.
               </p>
+              <p>
+                For a practical market-neutral checklist, read{' '}
+                <Link className="atlas-link" to="/resources/dcb-compliance-basics">
+                  DCB Compliance Basics
+                </Link>
+                .
+              </p>
             </GuideSection>
 
             <GuideSection eyebrow="7. Future direction" title="Where DCB is evolving">
@@ -221,6 +228,9 @@ export function WhatIsDcbPage() {
               <p className="font-semibold text-[#0d1b24]">Useful next pages</p>
               <div className="mt-3 flex flex-col gap-2">
                 <Link className="atlas-link" to="/markets">Browse DCB markets</Link>
+                <Link className="atlas-link" to="/resources/dcb-compliance-basics">
+                  Compliance basics
+                </Link>
                 <Link className="atlas-link" to="/methodology">Read methodology</Link>
                 <Link className="atlas-link" to="/about">About DCB Atlas</Link>
               </div>

@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { AboutPage } from './pages/About'
 import { CountryDetailPage } from './pages/CountryDetail'
+import { DcbComplianceBasicsPage } from './pages/DcbComplianceBasics'
 import { HomePage } from './pages/Home'
 import { ChromeHttpsHeaderEnrichmentArticle } from './pages/ChromeHttpsHeaderEnrichmentArticle'
 import { GlossaryIndexPage } from './pages/GlossaryIndex'
@@ -19,6 +20,7 @@ function App() {
         <Route path="markets" element={<MarketsPage />} />
         <Route path="markets/:slug" element={<CountryDetailPage />} />
         <Route path="resources/what-is-direct-carrier-billing" element={<WhatIsDcbPage />} />
+        <Route path="resources/dcb-compliance-basics" element={<DcbComplianceBasicsPage />} />
         <Route path="glossary" element={<GlossaryIndexPage />} />
         <Route path="glossary/:slug" element={<GlossaryTermPage />} />
         <Route path="insights" element={<InsightsPage />} />
