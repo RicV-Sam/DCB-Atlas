@@ -123,7 +123,7 @@ export function HomePage() {
           title="Learn the model, then compare the markets"
           description="Use these plain-English resources to understand DCB, core operator billing terms, and the latest identity changes affecting conversion."
         />
-        <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           <article className="atlas-panel px-6 py-6">
             <p className="atlas-eyebrow">Evergreen guide</p>
             <h2 className="atlas-title mt-3 text-3xl font-semibold text-[#0d1b24]">
@@ -186,6 +186,23 @@ export function HomePage() {
               to="/resources/dcb-compliance-basics"
             >
               Read compliance guide
+            </Link>
+          </article>
+
+          <article className="atlas-panel px-6 py-6">
+            <p className="atlas-eyebrow">Payments</p>
+            <h2 className="atlas-title mt-3 text-3xl font-semibold text-[#0d1b24]">
+              DCB vs cards vs wallets
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-[#35505f]">
+              A market-neutral comparison of when carrier billing, card payments,
+              and wallets are commercially useful.
+            </p>
+            <Link
+              className="atlas-button-secondary mt-5"
+              to="/resources/dcb-vs-card-payments-vs-wallets"
+            >
+              Compare methods
             </Link>
           </article>
 

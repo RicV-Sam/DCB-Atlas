@@ -159,6 +159,17 @@ export function GlossaryTermPage() {
                 </Link>
               </div>
             ) : null}
+            {term.slug === 'direct-carrier-billing' ? (
+              <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
+                <p className="font-semibold text-[#0d1b24]">Payment comparison</p>
+                <Link
+                  className="atlas-link mt-3"
+                  to="/resources/dcb-vs-card-payments-vs-wallets"
+                >
+                  DCB vs card payments vs wallets
+                </Link>
+              </div>
+            ) : null}
             <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
               <p className="font-semibold text-[#0d1b24]">Related analysis</p>
               <Link className="atlas-link mt-3" to={chromeArticlePath}>

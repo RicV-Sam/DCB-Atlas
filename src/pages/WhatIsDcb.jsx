@@ -162,6 +162,13 @@ export function WhatIsDcbPage() {
                 each receive their agreed share. The exact percentages vary by market,
                 operator, product category, risk, volume, and commercial agreement.
               </p>
+              <p>
+                To compare DCB with other payment options, read{' '}
+                <Link className="atlas-link" to="/resources/dcb-vs-card-payments-vs-wallets">
+                  DCB vs Card Payments vs Wallets
+                </Link>
+                .
+              </p>
             </GuideSection>
 
             <GuideSection eyebrow="6. Compliance" title="Compliance basics and risks">
@@ -240,6 +247,9 @@ export function WhatIsDcbPage() {
                 </Link>
                 <Link className="atlas-link" to="/resources/dcb-compliance-basics">
                   Compliance basics
+                </Link>
+                <Link className="atlas-link" to="/resources/dcb-vs-card-payments-vs-wallets">
+                  DCB vs cards vs wallets
                 </Link>
                 <Link className="atlas-link" to="/methodology">Read methodology</Link>
                 <Link className="atlas-link" to="/about">About DCB Atlas</Link>

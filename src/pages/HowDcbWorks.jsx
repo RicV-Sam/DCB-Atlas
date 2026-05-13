@@ -342,6 +342,12 @@ export function HowDcbWorksPage() {
                 <Link className="font-semibold text-white" to="/resources/dcb-compliance-basics">
                   DCB Compliance Basics
                 </Link>
+                <Link
+                  className="font-semibold text-white"
+                  to="/resources/dcb-vs-card-payments-vs-wallets"
+                >
+                  DCB vs Cards vs Wallets
+                </Link>
                 <Link className="font-semibold text-white" to="/glossary/direct-carrier-billing">
                   DCB glossary
                 </Link>

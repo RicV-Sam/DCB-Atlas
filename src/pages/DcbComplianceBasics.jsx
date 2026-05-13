@@ -290,6 +290,9 @@ export function DcbComplianceBasicsPage() {
                 <Link className="atlas-link" to="/resources/what-is-direct-carrier-billing">
                   What is DCB?
                 </Link>
+                <Link className="atlas-link" to="/resources/dcb-vs-card-payments-vs-wallets">
+                  DCB vs cards vs wallets
+                </Link>
                 <Link className="atlas-link" to="/methodology">Atlas methodology</Link>
                 <Link className="atlas-link" to="/about">About DCB Atlas</Link>
               </div>
