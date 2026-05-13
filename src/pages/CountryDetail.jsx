@@ -36,6 +36,9 @@ const renderSnapshotValue = (value, fallback = 'Pending') => {
   return value
 }
 
+const capabilityLabel = (value) =>
+  value ? 'Flagged in public data' : 'Not flagged in public data'
+
 export function CountryDetailPage() {
   const { slug } = useParams()
   const market = getMarketBySlug(slug)
@@ -58,8 +61,11 @@ export function CountryDetailPage() {
   const opportunity = getOpportunityBadge(getResolvedOpportunityLevel(market))
   const entryEase = getEntryEaseBadge(getResolvedEntryEase(market))
   const isPending = market.marketScore === null
-  const marketSummary = market.marketReality ?? market.commercialNote ?? market.notes
-  const whyThisMarketMatters = market.marketReality ?? market.commercialNote ?? market.notes
+  const marketSummary = market.marketReality ?? market.notes ?? market.commercialNote
+  const whyThisMarketMatters =
+    market.commercialNote && market.commercialNote !== marketSummary
+      ? market.commercialNote
+      : market.notes
   const aggregatorAccess = getAggregatorAccessLabel(market)
   const trafficSuitability = getTrafficSuitabilityLabel(market)
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -123,6 +129,11 @@ export function CountryDetailPage() {
               <Badge className={risk.className}>{risk.label}</Badge>
               <Badge className={confidence.className}>{confidence.label}</Badge>
             </div>
+            <p className="mt-4 max-w-3xl text-xs leading-6 text-[#6a7881]">
+              Public editorial profile. Use it for shortlist shaping and early
+              context, then verify operator routes, compliance requirements, and
+              commercial terms before launch.
+            </p>
           </div>
 
           <div className="rounded-[28px] bg-[#12354a] px-6 py-6 text-[#f3ead9]">
@@ -133,7 +144,7 @@ export function CountryDetailPage() {
                   Market score
                 </p>
                 <p className="atlas-title mt-2 text-4xl font-semibold">
-                  {market.marketScore ?? '—'}
+                  {market.marketScore ?? 'Pending'}
                 </p>
               </div>
               <div>
@@ -141,7 +152,7 @@ export function CountryDetailPage() {
                   Opportunity score
                 </p>
                 <p className="atlas-title mt-2 text-4xl font-semibold">
-                  {market.opportunityScore ?? '—'}
+                  {market.opportunityScore ?? 'Pending'}
                 </p>
               </div>
               <div>
@@ -189,7 +200,7 @@ export function CountryDetailPage() {
           <SectionHeading
             eyebrow="Market snapshot"
             title="Decision snapshot"
-            description="This block is intentionally compressed: it should help users scan the page before reading the deeper sections below."
+            description="This block is intentionally compressed: it helps users scan the page before reading the deeper sections below."
           />
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {snapshotItems.map((item) => (
@@ -221,7 +232,7 @@ export function CountryDetailPage() {
               <SectionHeading
                 eyebrow="Commercial framing"
                 title="Launch conditions"
-                description="Use this block to quickly assess how hard the market may be to open, structure, and monetise."
+                description="Use this block to frame route difficulty, pricing assumptions, and market-entry questions before deeper validation."
               />
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
@@ -265,7 +276,7 @@ export function CountryDetailPage() {
               <SectionHeading
                 eyebrow="Risk and readiness"
                 title="Operational caution points"
-                description="These signals are meant to highlight where launch assumptions may need extra validation."
+                description="These signals highlight where launch assumptions may need extra validation."
               />
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
@@ -301,19 +312,19 @@ export function CountryDetailPage() {
               <SectionHeading
                 eyebrow="Capabilities"
                 title="Billing and ecosystem signals"
-                description="These are useful for shortlist shaping, but still need route-level confirmation before launch."
+                description="These are public-data signals for shortlist shaping. They are not guarantees of live billing access."
               />
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
                   <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">DCB</p>
                   <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
-                    {market.capabilities?.dcb ? 'Yes' : 'No'}
+                    {capabilityLabel(market.capabilities?.dcb)}
                   </p>
                 </div>
                 <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
                   <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">PSMS</p>
                   <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
-                    {market.capabilities?.psms ? 'Yes' : 'No'}
+                    {capabilityLabel(market.capabilities?.psms)}
                   </p>
                 </div>
                 <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
@@ -323,7 +334,7 @@ export function CountryDetailPage() {
                   </p>
                 </div>
                 <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
-                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">HE support</p>
+                  <p className="text-xs uppercase tracking-[0.16em] text-[#6a7881]">Header Enrichment</p>
                   <p className="mt-2 text-lg font-semibold text-[#0d1b24]">
                     {sentenceCase(market.capabilities?.heSupport)}
                   </p>
@@ -386,7 +397,7 @@ export function CountryDetailPage() {
               <SectionHeading
                 eyebrow="Operators"
                 title="Main public operator references"
-                description="Operator listings remain useful for context, but should not be read as guaranteed commercial routing availability."
+                description="Operator listings are useful for context, but should not be read as guaranteed commercial routing availability."
               />
               <div className="mt-6 space-y-4">
                 {market.operators.length > 0 ? (
@@ -467,7 +478,7 @@ export function CountryDetailPage() {
         <SectionHeading
           eyebrow="Confidence and freshness"
           title="How to read this public profile"
-          description="Atlas profiles are editorial market references. They are built to accelerate prioritisation, not replace operator-level or legal validation."
+          description="Atlas profiles are editorial market references. They are built to accelerate prioritisation, not replace operator-level, commercial, or legal validation."
         />
         <div className="mt-6 grid gap-4 lg:grid-cols-3">
           <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-4">
@@ -502,6 +513,37 @@ export function CountryDetailPage() {
               </p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="atlas-panel px-6 py-6">
+        <SectionHeading
+          eyebrow="Related Atlas resources"
+          title="Use market pages with the operating model"
+          description="The public market profile is more useful when read alongside the DCB model, compliance, revenue-share and methodology guides."
+        />
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link className="atlas-button-secondary" to="/resources">
+            Resources
+          </Link>
+          <Link className="atlas-button-secondary" to="/resources/what-is-direct-carrier-billing">
+            What is DCB?
+          </Link>
+          <Link className="atlas-button-secondary" to="/resources/dcb-compliance-basics">
+            Compliance basics
+          </Link>
+          <Link className="atlas-button-secondary" to="/resources/operator-revenue-share-models">
+            Revenue share
+          </Link>
+          <Link className="atlas-button-secondary" to="/glossary">
+            Glossary
+          </Link>
+          <Link className="atlas-button-secondary" to="/methodology">
+            Methodology
+          </Link>
+          <Link className="atlas-button-secondary" to="/about">
+            About
+          </Link>
         </div>
       </section>
 

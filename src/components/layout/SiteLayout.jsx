@@ -64,8 +64,8 @@ export function SiteLayout() {
           <div>
             <p className="atlas-title text-lg text-[#0d1b24]">DCB Atlas</p>
             <p>
-              Static DCB market reference for shortlist shaping, partner context, and
-              launch planning.
+              Public DCB market reference for shortlist shaping, partner context,
+              and launch planning.
             </p>
           </div>
           <div className="flex flex-wrap gap-4">

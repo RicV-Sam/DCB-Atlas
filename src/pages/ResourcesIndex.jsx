@@ -16,7 +16,7 @@ const resourceGroups = [
     eyebrow: 'Start here',
     title: 'Understand the model',
     description:
-      'Plain-English foundations for people new to DCB and for teams aligning around the same operating model.',
+      'Clear foundations for people new to DCB and for teams aligning around the same operating model.',
     items: [
       {
         title: 'What is Direct Carrier Billing?',
@@ -76,7 +76,7 @@ const resourceGroups = [
         title: 'Chrome HTTPS and MSISDN Header Enrichment',
         to: '/insights/chrome-https-msisdn-header-enrichment-dcb-impact',
         summary:
-          'Why HTTPS-first browsing creates a wake-up call for legacy Header Enrichment and silent identification flows.',
+          'Why HTTPS-first browsing is a wake-up call for legacy Header Enrichment and silent identification flows.',
       },
       {
         title: 'MSISDN',
@@ -112,7 +112,7 @@ function ResourceCard({ item }) {
       <h3 className="text-xl font-semibold text-[#0d1b24]">{item.title}</h3>
       <p className="mt-3 text-sm leading-7 text-[#35505f]">{item.summary}</p>
       <Link className="atlas-link mt-4 inline-flex" to={item.to}>
-        Open resource
+        Read more
       </Link>
     </article>
   )

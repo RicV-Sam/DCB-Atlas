@@ -5,7 +5,7 @@ import { glossaryTerms } from '../data/glossary'
 import { buildBreadcrumbSchema, buildCollectionSchema } from '../utils/seo'
 
 const description =
-  'Plain-English definitions for Direct Carrier Billing, MSISDN, Header Enrichment, OTP, CAMARA, aggregators, and related VAS concepts.'
+  'Clear definitions for Direct Carrier Billing, MSISDN, Header Enrichment, OTP, CAMARA, aggregators, and related VAS concepts.'
 
 export function GlossaryIndexPage() {
   return (
@@ -30,8 +30,13 @@ export function GlossaryIndexPage() {
       <section className="atlas-panel px-6 py-8 sm:px-8">
         <SectionHeading
           eyebrow="Glossary"
-          title="Plain-English DCB, VAS, and operator billing terms"
+          title="DCB, VAS, and operator billing terms"
           description="A practical glossary for commercial, product, compliance, and technical teams who need the industry language without the fog."
+          action={
+            <Link className="atlas-button-secondary" to="/resources">
+              Resource hub
+            </Link>
+          }
         />
       </section>
 

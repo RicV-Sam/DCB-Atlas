@@ -51,7 +51,7 @@ export function HomePage() {
 
       <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="atlas-panel overflow-hidden px-6 py-8 sm:px-8 sm:py-10">
-          <p className="atlas-eyebrow">Global VAS / DCB market reference</p>
+          <p className="atlas-eyebrow">Global DCB / VAS market reference</p>
           <h1 className="atlas-title mt-3 max-w-4xl text-5xl font-semibold leading-tight text-[#0d1b24] sm:text-6xl">
             Find the best markets to launch DCB services globally
           </h1>
@@ -121,7 +121,7 @@ export function HomePage() {
         <SectionHeading
           eyebrow="Start here"
           title="Learn the model, then compare the markets"
-          description="Use these plain-English resources to understand DCB, core operator billing terms, and the latest identity changes affecting conversion."
+          description="Use these practical resources to understand DCB, core operator billing terms, and the latest identity changes affecting conversion."
           action={
             <Link className="atlas-button-secondary" to="/resources">
               Open resource hub
@@ -169,8 +169,8 @@ export function HomePage() {
               DCB and VAS terms
             </h2>
             <p className="mt-4 text-sm leading-7 text-[#35505f]">
-              Plain-English definitions for MSISDN, Header Enrichment, OTP,
-              CAMARA, aggregators, and related operator billing concepts.
+              Clear definitions for MSISDN, Header Enrichment, OTP, CAMARA,
+              aggregators, and related operator billing concepts.
             </p>
             <Link className="atlas-button-secondary mt-5" to="/glossary">
               Open glossary
@@ -217,8 +217,8 @@ export function HomePage() {
               Operator revenue share
             </h2>
             <p className="mt-4 text-sm leading-7 text-[#35505f]">
-              A plain-English guide to gross billed amount, operator share,
-              aggregator share, merchant net revenue, refunds, and settlement timing.
+              A commercial guide to gross billed amount, operator share, aggregator
+              share, merchant net revenue, refunds, and settlement timing.
             </p>
             <Link
               className="atlas-button-secondary mt-5"

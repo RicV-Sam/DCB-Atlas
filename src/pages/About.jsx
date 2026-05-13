@@ -20,7 +20,7 @@ export function AboutPage() {
         <SectionHeading
           eyebrow="About DCB Atlas"
           title="A public market-entry reference for teams evaluating VAS and carrier billing markets"
-          description="DCB Atlas exists for business development, partnerships, monetisation, and market-entry teams that need a sharper first pass on where to focus — without confusing public editorial signals for fully validated commercial truth."
+          description="DCB Atlas exists for business development, partnerships, monetisation, and market-entry teams that need a sharper first pass on where to focus, without treating public editorial signals as fully validated commercial truth."
         />
       </section>
 

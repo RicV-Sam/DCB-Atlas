@@ -31,7 +31,12 @@ export function InsightsPage() {
         <SectionHeading
           eyebrow="Insights"
           title="Practical analysis for operator billing and VAS teams"
-          description="Plain-English explainers and commercial notes for teams working across DCB, MVAS, aggregation, content, compliance, and mobile operator partnerships."
+          description="Commercial explainers and field notes for teams working across DCB, MVAS, aggregation, content, compliance, and mobile operator partnerships."
+          action={
+            <Link className="atlas-button-secondary" to="/resources">
+              Resource hub
+            </Link>
+          }
         />
       </section>
 
@@ -49,8 +54,8 @@ export function InsightsPage() {
               Chrome HTTPS, MSISDN Header Enrichment and DCB: What Operators Need to Know
             </h2>
             <p className="mt-4 text-sm leading-7 text-[#35505f]">
-              A plain-English guide to how Chrome's HTTPS-first move may affect
-              MSISDN Header Enrichment, DCB conversion, and operator VAS revenue.
+              A practical guide to how Chrome's HTTPS-first move may affect MSISDN
+              Header Enrichment, DCB conversion, and operator VAS revenue.
             </p>
             <Link
               className="atlas-button-primary mt-5"

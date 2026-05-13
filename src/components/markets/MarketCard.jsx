@@ -13,7 +13,7 @@ import { Badge } from '../shared/Badge'
 
 const truncate = (value, maxLength) => {
   if (!value || value.length <= maxLength) return value
-  return `${value.slice(0, maxLength).trim()}…`
+  return `${value.slice(0, maxLength).trim()}...`
 }
 
 export function MarketCard({ market, compact = false }) {
@@ -43,7 +43,7 @@ export function MarketCard({ market, compact = false }) {
             Market score
           </p>
           <p className="atlas-title text-3xl font-semibold text-[#12354a]">
-            {market.marketScore ?? '—'}
+            {market.marketScore ?? 'Pending'}
           </p>
         </div>
       </div>
@@ -93,7 +93,7 @@ export function MarketCard({ market, compact = false }) {
 
       <div className="mt-5 border-t border-[#12354a]/10 pt-5">
         <p className="text-sm leading-7 text-[#35505f]">
-          {commercialNote}
+          {commercialNote ?? 'Public market briefing not yet expanded.'}
         </p>
       </div>
 

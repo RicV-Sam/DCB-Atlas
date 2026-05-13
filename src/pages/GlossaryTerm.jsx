@@ -133,12 +133,17 @@ export function GlossaryTermPage() {
           <aside className="space-y-4">
             <div className="rounded-[24px] bg-[#12354a] p-5 text-sm leading-7 text-[#f3ead9]">
               <p className="atlas-eyebrow text-[#d8ba7a]">Start here</p>
-              <Link
-                className="mt-3 inline-flex font-semibold text-white"
-                to="/resources/what-is-direct-carrier-billing"
-              >
-                Read the DCB guide
-              </Link>
+              <div className="mt-3 flex flex-col gap-3">
+                <Link className="font-semibold text-white" to="/resources">
+                  Resource hub
+                </Link>
+                <Link
+                  className="font-semibold text-white"
+                  to="/resources/what-is-direct-carrier-billing"
+                >
+                  Read the DCB guide
+                </Link>
+              </div>
             </div>
             {complianceRelatedTerms.has(term.slug) ? (
               <div className="rounded-[24px] border border-[#12354a]/10 bg-white/70 p-5 text-sm leading-7 text-[#35505f]">
