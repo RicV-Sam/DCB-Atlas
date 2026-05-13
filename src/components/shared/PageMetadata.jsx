@@ -33,8 +33,13 @@ export function PageMetadata({
   pathname = '/',
   type = 'website',
   structuredData = [],
+  appendSiteName = true,
 }) {
-  const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME
+  const pageTitle = title
+    ? appendSiteName
+      ? `${title} | ${SITE_NAME}`
+      : title
+    : SITE_NAME
   const canonical = getCanonicalUrl(pathname)
   const schemaItems = Array.isArray(structuredData) ? structuredData : [structuredData]
 

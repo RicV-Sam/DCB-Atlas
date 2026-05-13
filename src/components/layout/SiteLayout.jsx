@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 const navItems = [
   { label: 'Atlas', to: '/' },
   { label: 'Markets', to: '/markets' },
+  { label: 'Insights', to: '/insights' },
   { label: 'Methodology', to: '/methodology' },
   { label: 'About', to: '/about' },
 ]
@@ -68,6 +69,9 @@ export function SiteLayout() {
           <div className="flex flex-wrap gap-4">
             <NavLink className="atlas-link" to="/markets">
               Browse markets
+            </NavLink>
+            <NavLink className="atlas-link" to="/insights">
+              Insights
             </NavLink>
             <NavLink className="atlas-link" to="/methodology">
               Methodology

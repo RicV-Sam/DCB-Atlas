@@ -31,6 +31,34 @@ export const buildCollectionSchema = ({ name, description, pathname }) => ({
   url: getCanonicalUrl(pathname),
 })
 
+export const buildArticleSchema = ({
+  headline,
+  description,
+  pathname,
+  image,
+  datePublished,
+  dateModified = datePublished,
+}) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline,
+  description,
+  url: getCanonicalUrl(pathname),
+  image,
+  datePublished,
+  dateModified,
+  author: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+})
+
 export const buildBreadcrumbSchema = (items) => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
